@@ -1,0 +1,2 @@
+home:
+    resource: "@Sf2MCQHomeBundle/Resources/config/routing.yml"
