@@ -1,7 +1,0 @@
-#homepage:
-#    pattern:  /
-#    defaults: { _controller: Sf2MCQHomeBundle:Default:index }
-
-homepage:
-  pattern: /
-  defaults: { _controller: Sf2MCQHomeBundle:Home:index }
