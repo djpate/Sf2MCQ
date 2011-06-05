@@ -1,6 +1,6 @@
-Sf2MCQ\Bundle\Entity\Level:
+Sf2MCQ\CoreBundle\Entity\Category:
   type: entity
-  table: level
+  table: category
   id:
     id:
       type: integer
@@ -11,7 +11,7 @@ Sf2MCQ\Bundle\Entity\Level:
       type: string
       length: 255
   oneToMany:
-    interviews:
-      targetEntity: Interview
-      mappedBy: level
+    subjects:
+      targetEntity: Subject
+      mappedBy: category
       

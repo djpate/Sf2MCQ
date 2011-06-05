@@ -1,9 +1,9 @@
 <?php
 
-namespace Sf2MCQ\Bundle\Entity;
+namespace Sf2MCQ\CoreBundle\Entity;
 
 /**
- * Sf2MCQ\Bundle\Entity\Answer
+ * Sf2MCQ\CoreBundle\Entity\Answer
  */
 class Answer
 {
@@ -23,7 +23,7 @@ class Answer
     private $valid;
 
     /**
-     * @var Sf2MCQ\Bundle\Entity\Question
+     * @var Sf2MCQ\CoreBundle\Entity\Question
      */
     private $question;
 
@@ -81,9 +81,9 @@ class Answer
     /**
      * Set question
      *
-     * @param Sf2MCQ\Bundle\Entity\Question $question
+     * @param Sf2MCQ\CoreBundle\Entity\Question $question
      */
-    public function setQuestion(\Sf2MCQ\Bundle\Entity\Question $question)
+    public function setQuestion(\Sf2MCQ\CoreBundle\Entity\Question $question)
     {
         $this->question = $question;
     }
@@ -91,7 +91,7 @@ class Answer
     /**
      * Get question
      *
-     * @return Sf2MCQ\Bundle\Entity\Question $question
+     * @return Sf2MCQ\CoreBundle\Entity\Question $question
      */
     public function getQuestion()
     {

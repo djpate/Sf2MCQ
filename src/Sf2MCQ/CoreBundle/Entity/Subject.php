@@ -1,9 +1,9 @@
 <?php
 
-namespace Sf2MCQ\Bundle\Entity;
+namespace Sf2MCQ\CoreBundle\Entity;
 
 /**
- * Sf2MCQ\Bundle\Entity\Subject
+ * Sf2MCQ\CoreBundle\Entity\Subject
  */
 class Subject
 {
@@ -23,7 +23,7 @@ class Subject
     private $description;
 
     /**
-     * @var Sf2MCQ\Bundle\Entity\Category
+     * @var Sf2MCQ\CoreBundle\Entity\Category
      */
     private $category;
 
@@ -81,9 +81,9 @@ class Subject
     /**
      * Set category
      *
-     * @param Sf2MCQ\Bundle\Entity\Category $category
+     * @param Sf2MCQ\CoreBundle\Entity\Category $category
      */
-    public function setCategory(\Sf2MCQ\Bundle\Entity\Category $category)
+    public function setCategory(\Sf2MCQ\CoreBundle\Entity\Category $category)
     {
         $this->category = $category;
     }
@@ -91,7 +91,7 @@ class Subject
     /**
      * Get category
      *
-     * @return Sf2MCQ\Bundle\Entity\Category $category
+     * @return Sf2MCQ\CoreBundle\Entity\Category $category
      */
     public function getCategory()
     {

@@ -1,4 +1,4 @@
-Sf2MCQ\Bundle\Entity\Interview:
+Sf2MCQ\CoreBundle\Entity\Interview:
   type: entity
   table: interview
   id:

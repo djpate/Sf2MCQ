@@ -1,9 +1,9 @@
 <?php
 
-namespace Sf2MCQ\Bundle\Entity;
+namespace Sf2MCQ\CoreBundle\Entity;
 
 /**
- * Sf2MCQ\Bundle\Entity\Candidate
+ * Sf2MCQ\CoreBundle\Entity\Candidate
  */
 class Candidate
 {
@@ -23,7 +23,7 @@ class Candidate
     private $lastname;
 
     /**
-     * @var Sf2MCQ\Bundle\Entity\Test
+     * @var Sf2MCQ\CoreBundle\Entity\Test
      */
     private $tests;
 
@@ -85,9 +85,9 @@ class Candidate
     /**
      * Add tests
      *
-     * @param Sf2MCQ\Bundle\Entity\Test $tests
+     * @param Sf2MCQ\CoreBundle\Entity\Test $tests
      */
-    public function addTests(\Sf2MCQ\Bundle\Entity\Test $tests)
+    public function addTests(\Sf2MCQ\CoreBundle\Entity\Test $tests)
     {
         $this->tests[] = $tests;
     }

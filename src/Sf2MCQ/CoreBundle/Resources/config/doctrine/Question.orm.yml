@@ -1,4 +1,4 @@
-Sf2MCQ\Bundle\Entity\Question:
+Sf2MCQ\CoreBundle\Entity\Question:
   type: entity
   table: question
   id:

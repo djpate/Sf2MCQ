@@ -1,2 +1,2 @@
 sf2mcq:
-    resource: "@Sf2MCQBundle/Resources/config/routing.yml"
+    resource: "@Sf2MCQCoreBundle/Resources/config/routing.yml"

@@ -1,9 +1,9 @@
 <?php
 
-namespace Sf2MCQ\Bundle\Entity;
+namespace Sf2MCQ\CoreBundle\Entity;
 
 /**
- * Sf2MCQ\Bundle\Entity\Proposition
+ * Sf2MCQ\CoreBundle\Entity\Proposition
  */
 class Proposition
 {
@@ -13,12 +13,12 @@ class Proposition
     private $id;
 
     /**
-     * @var Sf2MCQ\Bundle\Entity\Question
+     * @var Sf2MCQ\CoreBundle\Entity\Question
      */
     private $question;
 
     /**
-     * @var Sf2MCQ\Bundle\Entity\Answer
+     * @var Sf2MCQ\CoreBundle\Entity\Answer
      */
     private $answers;
 
@@ -40,9 +40,9 @@ class Proposition
     /**
      * Set question
      *
-     * @param Sf2MCQ\Bundle\Entity\Question $question
+     * @param Sf2MCQ\CoreBundle\Entity\Question $question
      */
-    public function setQuestion(\Sf2MCQ\Bundle\Entity\Question $question)
+    public function setQuestion(\Sf2MCQ\CoreBundle\Entity\Question $question)
     {
         $this->question = $question;
     }
@@ -50,7 +50,7 @@ class Proposition
     /**
      * Get question
      *
-     * @return Sf2MCQ\Bundle\Entity\Question $question
+     * @return Sf2MCQ\CoreBundle\Entity\Question $question
      */
     public function getQuestion()
     {
@@ -60,9 +60,9 @@ class Proposition
     /**
      * Add answers
      *
-     * @param Sf2MCQ\Bundle\Entity\Answer $answers
+     * @param Sf2MCQ\CoreBundle\Entity\Answer $answers
      */
-    public function addAnswers(\Sf2MCQ\Bundle\Entity\Answer $answers)
+    public function addAnswers(\Sf2MCQ\CoreBundle\Entity\Answer $answers)
     {
         $this->answers[] = $answers;
     }

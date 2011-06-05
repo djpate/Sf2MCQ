@@ -1,0 +1,3 @@
+homepage:
+  pattern: /
+  defaults: { _controller: Sf2MCQCoreBundle:Home:index }

@@ -1,4 +1,4 @@
-Sf2MCQ\Bundle\Entity\Subject:
+Sf2MCQ\CoreBundle\Entity\Subject:
   type: entity
   table: subject
   id:

@@ -1,9 +1,9 @@
 <?php
 
-namespace Sf2MCQ\Bundle\Entity;
+namespace Sf2MCQ\CoreBundle\Entity;
 
 /**
- * Sf2MCQ\Bundle\Entity\Interview
+ * Sf2MCQ\CoreBundle\Entity\Interview
  */
 class Interview
 {
@@ -23,17 +23,17 @@ class Interview
     private $duration;
 
     /**
-     * @var Sf2MCQ\Bundle\Entity\Question
+     * @var Sf2MCQ\CoreBundle\Entity\Question
      */
     private $questions;
 
     /**
-     * @var Sf2MCQ\Bundle\Entity\Level
+     * @var Sf2MCQ\CoreBundle\Entity\Level
      */
     private $level;
 
     /**
-     * @var Sf2MCQ\Bundle\Entity\Subject
+     * @var Sf2MCQ\CoreBundle\Entity\Subject
      */
     private $subject;
 
@@ -95,9 +95,9 @@ class Interview
     /**
      * Add questions
      *
-     * @param Sf2MCQ\Bundle\Entity\Question $questions
+     * @param Sf2MCQ\CoreBundle\Entity\Question $questions
      */
-    public function addQuestions(\Sf2MCQ\Bundle\Entity\Question $questions)
+    public function addQuestions(\Sf2MCQ\CoreBundle\Entity\Question $questions)
     {
         $this->questions[] = $questions;
     }
@@ -115,9 +115,9 @@ class Interview
     /**
      * Set level
      *
-     * @param Sf2MCQ\Bundle\Entity\Level $level
+     * @param Sf2MCQ\CoreBundle\Entity\Level $level
      */
-    public function setLevel(\Sf2MCQ\Bundle\Entity\Level $level)
+    public function setLevel(\Sf2MCQ\CoreBundle\Entity\Level $level)
     {
         $this->level = $level;
     }
@@ -125,7 +125,7 @@ class Interview
     /**
      * Get level
      *
-     * @return Sf2MCQ\Bundle\Entity\Level $level
+     * @return Sf2MCQ\CoreBundle\Entity\Level $level
      */
     public function getLevel()
     {
@@ -135,9 +135,9 @@ class Interview
     /**
      * Set subject
      *
-     * @param Sf2MCQ\Bundle\Entity\Subject $subject
+     * @param Sf2MCQ\CoreBundle\Entity\Subject $subject
      */
-    public function setSubject(\Sf2MCQ\Bundle\Entity\Subject $subject)
+    public function setSubject(\Sf2MCQ\CoreBundle\Entity\Subject $subject)
     {
         $this->subject = $subject;
     }
@@ -145,7 +145,7 @@ class Interview
     /**
      * Get subject
      *
-     * @return Sf2MCQ\Bundle\Entity\Subject $subject
+     * @return Sf2MCQ\CoreBundle\Entity\Subject $subject
      */
     public function getSubject()
     {

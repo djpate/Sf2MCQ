@@ -1,9 +1,9 @@
 <?php
 
-namespace Sf2MCQ\Bundle\Entity;
+namespace Sf2MCQ\CoreBundle\Entity;
 
 /**
- * Sf2MCQ\Bundle\Entity\Test
+ * Sf2MCQ\CoreBundle\Entity\Test
  */
 class Test
 {
@@ -23,12 +23,12 @@ class Test
     private $end;
 
     /**
-     * @var Sf2MCQ\Bundle\Entity\Proposition
+     * @var Sf2MCQ\CoreBundle\Entity\Proposition
      */
     private $propositions;
 
     /**
-     * @var Sf2MCQ\Bundle\Entity\Candidate
+     * @var Sf2MCQ\CoreBundle\Entity\Candidate
      */
     private $candidate;
 
@@ -90,9 +90,9 @@ class Test
     /**
      * Add propositions
      *
-     * @param Sf2MCQ\Bundle\Entity\Proposition $propositions
+     * @param Sf2MCQ\CoreBundle\Entity\Proposition $propositions
      */
-    public function addPropositions(\Sf2MCQ\Bundle\Entity\Proposition $propositions)
+    public function addPropositions(\Sf2MCQ\CoreBundle\Entity\Proposition $propositions)
     {
         $this->propositions[] = $propositions;
     }
@@ -110,9 +110,9 @@ class Test
     /**
      * Set candidate
      *
-     * @param Sf2MCQ\Bundle\Entity\Candidate $candidate
+     * @param Sf2MCQ\CoreBundle\Entity\Candidate $candidate
      */
-    public function setCandidate(\Sf2MCQ\Bundle\Entity\Candidate $candidate)
+    public function setCandidate(\Sf2MCQ\CoreBundle\Entity\Candidate $candidate)
     {
         $this->candidate = $candidate;
     }
@@ -120,7 +120,7 @@ class Test
     /**
      * Get candidate
      *
-     * @return Sf2MCQ\Bundle\Entity\Candidate $candidate
+     * @return Sf2MCQ\CoreBundle\Entity\Candidate $candidate
      */
     public function getCandidate()
     {

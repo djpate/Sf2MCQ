@@ -1,4 +1,4 @@
-Sf2MCQ\Bundle\Entity\Candidate:
+Sf2MCQ\CoreBundle\Entity\Candidate:
   type: entity
   table: candidate
   id:

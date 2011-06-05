@@ -1,9 +1,9 @@
 <?php
 
-namespace Sf2MCQ\Bundle\Entity;
+namespace Sf2MCQ\CoreBundle\Entity;
 
 /**
- * Sf2MCQ\Bundle\Entity\Level
+ * Sf2MCQ\CoreBundle\Entity\Level
  */
 class Level
 {
@@ -18,7 +18,7 @@ class Level
     private $name;
 
     /**
-     * @var Sf2MCQ\Bundle\Entity\Interview
+     * @var Sf2MCQ\CoreBundle\Entity\Interview
      */
     private $interviews;
 
@@ -60,9 +60,9 @@ class Level
     /**
      * Add interviews
      *
-     * @param Sf2MCQ\Bundle\Entity\Interview $interviews
+     * @param Sf2MCQ\CoreBundle\Entity\Interview $interviews
      */
-    public function addInterviews(\Sf2MCQ\Bundle\Entity\Interview $interviews)
+    public function addInterviews(\Sf2MCQ\CoreBundle\Entity\Interview $interviews)
     {
         $this->interviews[] = $interviews;
     }

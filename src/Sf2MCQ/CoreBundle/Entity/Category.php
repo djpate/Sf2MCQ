@@ -1,9 +1,9 @@
 <?php
 
-namespace Sf2MCQ\Bundle\Entity;
+namespace Sf2MCQ\CoreBundle\Entity;
 
 /**
- * Sf2MCQ\Bundle\Entity\Category
+ * Sf2MCQ\CoreBundle\Entity\Category
  */
 class Category
 {
@@ -18,7 +18,7 @@ class Category
     private $name;
 
     /**
-     * @var Sf2MCQ\Bundle\Entity\Subject
+     * @var Sf2MCQ\CoreBundle\Entity\Subject
      */
     private $subjects;
 
@@ -60,9 +60,9 @@ class Category
     /**
      * Add subjects
      *
-     * @param Sf2MCQ\Bundle\Entity\Subject $subjects
+     * @param Sf2MCQ\CoreBundle\Entity\Subject $subjects
      */
-    public function addSubjects(\Sf2MCQ\Bundle\Entity\Subject $subjects)
+    public function addSubjects(\Sf2MCQ\CoreBundle\Entity\Subject $subjects)
     {
         $this->subjects[] = $subjects;
     }

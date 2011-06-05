@@ -1,9 +1,9 @@
 <?php
 
-namespace Sf2MCQ\Bundle\Entity;
+namespace Sf2MCQ\CoreBundle\Entity;
 
 /**
- * Sf2MCQ\Bundle\Entity\Question
+ * Sf2MCQ\CoreBundle\Entity\Question
  */
 class Question
 {
@@ -23,12 +23,12 @@ class Question
     private $points;
 
     /**
-     * @var Sf2MCQ\Bundle\Entity\Answer
+     * @var Sf2MCQ\CoreBundle\Entity\Answer
      */
     private $answers;
 
     /**
-     * @var Sf2MCQ\Bundle\Entity\Interview
+     * @var Sf2MCQ\CoreBundle\Entity\Interview
      */
     private $interview;
 
@@ -90,9 +90,9 @@ class Question
     /**
      * Add answers
      *
-     * @param Sf2MCQ\Bundle\Entity\Answer $answers
+     * @param Sf2MCQ\CoreBundle\Entity\Answer $answers
      */
-    public function addAnswers(\Sf2MCQ\Bundle\Entity\Answer $answers)
+    public function addAnswers(\Sf2MCQ\CoreBundle\Entity\Answer $answers)
     {
         $this->answers[] = $answers;
     }
@@ -110,9 +110,9 @@ class Question
     /**
      * Set interview
      *
-     * @param Sf2MCQ\Bundle\Entity\Interview $interview
+     * @param Sf2MCQ\CoreBundle\Entity\Interview $interview
      */
-    public function setInterview(\Sf2MCQ\Bundle\Entity\Interview $interview)
+    public function setInterview(\Sf2MCQ\CoreBundle\Entity\Interview $interview)
     {
         $this->interview = $interview;
     }
@@ -120,7 +120,7 @@ class Question
     /**
      * Get interview
      *
-     * @return Sf2MCQ\Bundle\Entity\Interview $interview
+     * @return Sf2MCQ\CoreBundle\Entity\Interview $interview
      */
     public function getInterview()
     {
