@@ -1,6 +1,6 @@
 Sf2MCQ\Bundle\Entity\Proposition:
   type: entity
-  table: candidate
+  table: proposition
   id:
     id:
       type: integer
