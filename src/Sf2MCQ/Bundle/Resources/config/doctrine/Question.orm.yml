@@ -12,10 +12,11 @@ Sf2MCQ\Bundle\Entity\Question:
       length: 255
     points:
       type: integer
-  manyToOne:
+  oneToMany:
     answers:
       targetEntity: Answer
       mappedBy: question
+  manyToOne:
     interview:
       targetEntity: Interview
       inversedBy: questions

@@ -12,7 +12,7 @@ Sf2MCQ\Bundle\Entity\Subject:
       length: 255
     description:
       type: text
-  oneToMany:
+  manyToOne:
     category:
       targetEntity: Category
       inversedBy: subjects

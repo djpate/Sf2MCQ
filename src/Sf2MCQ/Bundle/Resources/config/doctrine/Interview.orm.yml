@@ -17,10 +17,11 @@ Sf2MCQ\Bundle\Entity\Interview:
     questions:
       targetEntity: Question
       mappedBy: interview
-    subject:
-      targetEntity: Subject
-      inversedBy: interviews
+  manyToOne:
     level:
       targetEntity: Level
+      inversedBy: interviews
+    subject:
+      targetEntity: Subject
       inversedBy: interviews
       

@@ -11,7 +11,7 @@ Sf2MCQ\Bundle\Entity\Candidate:
       type: string
     lastname:
       type: string
-  manyToOne:
+  oneToMany:
     tests:
       targetEntity: Test
       mappedBy: candidate

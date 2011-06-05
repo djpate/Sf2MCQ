@@ -11,11 +11,12 @@ Sf2MCQ\Bundle\Entity\Test:
       type: datetime
     end:
       type: datetime
+  oneToMany:
+    propositions:
+      targetEntity: proposition
+      mappedBy: test
   manyToOne:
     candidate:
       targetEntity: Candidate
       inversedBy: tests
-    propositions:
-      targetEntity: proposition
-      mappedBy: test
     
