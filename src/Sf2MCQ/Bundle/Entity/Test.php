@@ -23,7 +23,7 @@ class Test
     private $end;
 
     /**
-     * @var Sf2MCQ\Bundle\Entity\proposition
+     * @var Sf2MCQ\Bundle\Entity\Proposition
      */
     private $propositions;
 
@@ -90,9 +90,9 @@ class Test
     /**
      * Add propositions
      *
-     * @param Sf2MCQ\Bundle\Entity\proposition $propositions
+     * @param Sf2MCQ\Bundle\Entity\Proposition $propositions
      */
-    public function addPropositions(\Sf2MCQ\Bundle\Entity\proposition $propositions)
+    public function addPropositions(\Sf2MCQ\Bundle\Entity\Proposition $propositions)
     {
         $this->propositions[] = $propositions;
     }

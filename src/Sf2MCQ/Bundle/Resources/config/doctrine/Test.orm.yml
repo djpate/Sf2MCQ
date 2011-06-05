@@ -13,7 +13,7 @@ Sf2MCQ\Bundle\Entity\Test:
       type: datetime
   oneToMany:
     propositions:
-      targetEntity: proposition
+      targetEntity: Proposition
       mappedBy: test
   manyToOne:
     candidate:
