@@ -1,4 +1,4 @@
-Sf2MCQ\Bundle\Entity\Question:
+Sf2MCQ\Bundle\Entity\Answer:
   type: entity
   table: answer
   id:

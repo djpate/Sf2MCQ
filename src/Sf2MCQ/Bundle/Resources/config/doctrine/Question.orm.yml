@@ -12,7 +12,7 @@ Sf2MCQ\Bundle\Entity\Question:
       length: 255
     points:
       type: integer
-  oneToMany:
+  manyToOne:
     answers:
       targetEntity: Answer
       mappedBy: question
