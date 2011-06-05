@@ -6,13 +6,14 @@
 		</div>
 	</div>
 	<div id="portfolio">
-				<ul id="filterable">
-					<li class="first">
-					<h5>Filtrer par</h5>
-					</li>
-					{% for category in categories %}
-						<li><a class="web" href="#web">{{ category.name }}</a></li>
-					{% endfor %}
-				</ul>
+		<ul id="filterable">
+			<li class="first">
+			<h5>Filtrer par</h5>
+			</li>
+			<li class="current"><a class="all" href="#all">Tout</a></li>
+			{% for category in categories %}
+				<li><a class="web" href="#web">{{ category.name }}</a></li>
+			{% endfor %}
+		</ul>
 	</div>
 {% endblock %}
