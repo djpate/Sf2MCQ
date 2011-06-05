@@ -1,4 +1,18 @@
 {% extends 'Sf2MCQCoreBundle::base.html.twig' %}
 {% block body %}
-	Hello homepage
+	<div class="one">
+		<div class="intro-pages">
+			<h3>Bienvenue sur <span class="colored">Sf2MCQ</span>, Votre plateforme de test de recrutement !</h3>
+		</div>
+	</div>
+	<div id="portfolio">
+				<ul id="filterable">
+					<li class="first">
+					<h5>Filtrer par</h5>
+					</li>
+					{% for category in categories %}
+						<li><a class="web" href="#web">{{ category.name }}</a></li>
+					{% endfor %}
+				</ul>
+	</div>
 {% endblock %}
