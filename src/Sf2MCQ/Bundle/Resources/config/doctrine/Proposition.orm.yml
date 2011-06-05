@@ -1,0 +1,26 @@
+Sf2MCQ\Bundle\Entity\Candidate:
+  type: entity
+  table: candidate
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  oneToOne:
+    question:
+      targetEntity: Question
+  manyToMany:
+    answers:
+      targetEntity: Answer
+      joinTable: 
+        name: proposition_answers
+        joinColumns:
+          proposition_id:
+            referencedColumnName: id
+        inverseJoinColumns:
+          answer_id:
+            referencedColumnName: id
+            unique: true
+      
+      
+

@@ -1,0 +1,22 @@
+Sf2MCQ\Bundle\Entity\Question:
+  type: entity
+  table: question
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    content:
+      type: text
+      length: 255
+    points:
+      type: integer
+  oneToMany:
+    answers:
+      targetEntity: Answer
+      mappedBy: question
+    interview:
+      targetEntity: Interview
+      inversedBy: questions
+      

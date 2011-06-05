@@ -1,0 +1,19 @@
+Sf2MCQ\Bundle\Entity\Subject:
+  type: entity
+  table: subject
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    name:
+      type: string
+      length: 255
+    description:
+      type: text
+  oneToMany:
+    category:
+      targetEntity: Category
+      inversedBy: subjects
+    

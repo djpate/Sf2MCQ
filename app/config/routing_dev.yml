@@ -1,2 +1,5 @@
+wdt:
+  resource: "@WebProfilerBundle/Resources/config/routing/wdt.xml"
+  prefix:   /_wdt
 sf2mcq:
     resource: "@Sf2MCQBundle/Resources/config/routing.yml"

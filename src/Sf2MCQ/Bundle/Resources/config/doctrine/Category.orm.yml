@@ -1,0 +1,17 @@
+Sf2MCQ\Bundle\Entity\Category:
+  type: entity
+  table: category
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    name:
+      type: string
+      length: 255
+  oneToMany:
+    subjects:
+      targetEntity: Subject
+      mappedBy: category
+      

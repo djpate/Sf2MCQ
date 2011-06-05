@@ -1,0 +1,26 @@
+Sf2MCQ\Bundle\Entity\Interview:
+  type: entity
+  table: interview
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    name:
+      type: string
+      length: 255
+    duration:
+      type: string
+      length: 255
+  oneToMany:
+    questions:
+      targetEntity: Question
+      mappedBy: interview
+    subject:
+      targetEntity: Subject
+      inversedBy: interviews
+    level:
+      targetEntity: Level
+      inversedBy: interviews
+      
