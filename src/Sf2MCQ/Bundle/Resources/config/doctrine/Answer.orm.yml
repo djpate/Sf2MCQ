@@ -11,7 +11,7 @@ Sf2MCQ\Bundle\Entity\Answer:
       type: text
     valid:
       type: boolean
-  oneToMany:
+  manyToOne:
     question:
       targetEntity: Question
       inversedBy: answers

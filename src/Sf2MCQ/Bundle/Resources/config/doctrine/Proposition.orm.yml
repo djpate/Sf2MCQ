@@ -1,4 +1,4 @@
-Sf2MCQ\Bundle\Entity\Candidate:
+Sf2MCQ\Bundle\Entity\Proposition:
   type: entity
   table: candidate
   id:

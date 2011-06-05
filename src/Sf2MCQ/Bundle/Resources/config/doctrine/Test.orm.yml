@@ -15,7 +15,7 @@ Sf2MCQ\Bundle\Entity\Test:
     candidate:
       targetEntity: Candidate
       inversedBy: tests
-   propositions:
-     targetEntity: proposition
-     mappedBy: test
+    propositions:
+      targetEntity: proposition
+      mappedBy: test
     
