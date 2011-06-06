@@ -2,10 +2,12 @@
 
 namespace Sf2MCQ\CoreBundle\Entity;
 
+use Sf2MCQ\CoreBundle\Model\SubjectModel;
+
 /**
  * Sf2MCQ\CoreBundle\Entity\Subject
  */
-class Subject
+class Subject extends SubjectModel
 {
     /**
      * @var integer $id
@@ -96,5 +98,34 @@ class Subject
     public function getCategory()
     {
         return $this->category;
+    }
+    /**
+     * @var Sf2MCQ\CoreBundle\Entity\Interview
+     */
+    private $interviews;
+
+    public function __construct()
+    {
+        $this->interviews = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add interviews
+     *
+     * @param Sf2MCQ\CoreBundle\Entity\Interview $interviews
+     */
+    public function addInterviews(\Sf2MCQ\CoreBundle\Entity\Interview $interviews)
+    {
+        $this->interviews[] = $interviews;
+    }
+
+    /**
+     * Get interviews
+     *
+     * @return Doctrine\Common\Collections\Collection $interviews
+     */
+    public function getInterviews()
+    {
+        return $this->interviews;
     }
 }

@@ -3,9 +3,9 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
 		<title>{% block title %}Sf2MCQ{% endblock %}</title>
-		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
-		<script type="text/javascript" src="js/jquery.js"></script>
-		<script type="text/javascript" src="js/jquery.quicksand.js"></script>
+		<link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />
+		<script type="text/javascript" src="/js/jquery.js"></script>
+		<script type="text/javascript" src="/js/script.js"></script>
 	</head>
 	<body>
 		<div id="wrapper">
@@ -13,12 +13,12 @@
 				<div id="container">
 					<div id="header">
 						<a id="logo" title="Homepage" href="index.html">
-							<img src="images/logo.png" alt=" " width="250" height="60"/>
+							<img src="/images/logo.png" alt=" " width="250" height="60"/>
 						</a>
 						<div id="main_navigation" class="main-menu "> 
 							{% block navigation %}
 								<ul> 
-									<li><a href="index.html" title="Home">Home</a></li> 
+									<li><a href="{{ path('homepage') }}" title="Home">Home</a></li> 
 									<li><a href="#">Features</a>
 								</ul>
 							{% endblock %}
@@ -43,9 +43,9 @@
 						<div class="one-fourth">	
 						<h5>Stay in Touch</h5>
 							<ul class="social-links">
-								<li><img src="images/facebook.png" width="16" height="16" alt="#"/><a href="#">Our Facebook page</a></li> 
-								<li><img src="images/twitter.png" width="16" height="16" alt="#"/><a href="#">Follow us on Twitter</a></li> 
-								<li><img src="images/rss.png" width="16" height="16" alt="#"/><a href="#">Our RSS Feeds</a></li> 	 
+								<li><img src="/images/facebook.png" width="16" height="16" alt="#"/><a href="#">Our Facebook page</a></li> 
+								<li><img src="/images/twitter.png" width="16" height="16" alt="#"/><a href="#">Follow us on Twitter</a></li> 
+								<li><img src="/images/rss.png" width="16" height="16" alt="#"/><a href="#">Our RSS Feeds</a></li> 	 
 							</ul> 
 						</div>
 						<div class="one-fourth last">

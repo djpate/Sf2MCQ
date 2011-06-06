@@ -1,0 +1,15 @@
+{% extends 'Sf2MCQCoreBundle::base.html.twig' %}
+{% block body %}
+	<div class="one">
+		<div class="intro-pages">
+			<h3>Liste des test <span class="colored">{{ subject.name }}</span></h3>
+		</div>
+	</div>
+	<div class="one">
+		<ul class="testList">
+			{% for test in subject.interviews %}
+				{{ test.name }}
+			{% endfor %}
+		</ul>
+	</div>
+{% endblock %}

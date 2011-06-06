@@ -12,6 +12,10 @@ Sf2MCQ\CoreBundle\Entity\Subject:
       length: 255
     description:
       type: text
+  oneToMany:
+    interviews:
+      targetEntity: Interview
+      mappedBy: subject
   manyToOne:
     category:
       targetEntity: Category
