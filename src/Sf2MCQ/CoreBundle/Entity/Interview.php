@@ -2,10 +2,12 @@
 
 namespace Sf2MCQ\CoreBundle\Entity;
 
+use Sf2MCQ\CoreBundle\Model\InterviewModel;
+
 /**
  * Sf2MCQ\CoreBundle\Entity\Interview
  */
-class Interview
+class Interview extends InterviewModel
 {
     /**
      * @var integer $id

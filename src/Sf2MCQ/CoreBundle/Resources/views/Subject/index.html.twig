@@ -6,10 +6,45 @@
 		</div>
 	</div>
 	<div class="one">
-		<ul class="testList">
-			{% for test in subject.interviews %}
-				{{ test.name }}
-			{% endfor %}
-		</ul>
+		<table>
+			<tr>
+				<th>
+					Test
+				</th>
+				<th>
+					Niveau
+				</th>
+				<th>
+					Nombre de questions
+				</th>
+				<th>
+					Durée
+				</th>
+				<th>
+					Action
+				</th>
+			</tr>
+		{% for test in subject.interviews %}
+			<tr>
+				<td>
+					<strong>
+						{{ test.name }}
+					</strong>
+				</td>
+				<td>
+					{{ test.level.name }}
+				</td>
+				<td>
+					{{ test.nbQuestion }}
+				</td>
+				<td>
+					{{ test.prettyDuration }}
+				</td>
+				<td>
+					<a class="cool-button round blue" href="#">Demarrer le test</a>
+				</td>
+			</tr>
+		{% endfor %}
+		</table>
 	</div>
 {% endblock %}

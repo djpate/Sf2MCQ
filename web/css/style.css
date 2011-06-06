@@ -111,7 +111,8 @@ table {
 	border-spacing:0;
 	border-top-width:5px;
 	margin-bottom:10px;
-	border:1px solid #efefef
+	border:1px solid #efefef;
+	width: 100%;
 }
 th {
 	padding:10px 15px;
