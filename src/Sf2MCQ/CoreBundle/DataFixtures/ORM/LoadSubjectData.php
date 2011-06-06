@@ -26,17 +26,19 @@ class LoadSubjectData extends AbstractFixture implements OrderedFixtureInterface
         $cpp->setCategory($manager->merge($prog_category));
         $manager->persist($cpp);
         
-        $cpp = new Subject();
-        $cpp->setName('PHP5');
-        $cpp->setDescription('PHP is a general-purpose scripting language originally designed for web development to produce dynamic web pages. For this purpose, PHP code is embedded into the HTML source document and interpreted by a web server with a PHP processor module, which generates the web page document.');
-        $cpp->setCategory($manager->merge($prog_category));
-        $manager->persist($cpp);
+        $php = new Subject();
+        $php->setName('PHP5');
+        $php->setDescription('PHP is a general-purpose scripting language originally designed for web development to produce dynamic web pages. For this purpose, PHP code is embedded into the HTML source document and interpreted by a web server with a PHP processor module, which generates the web page document.');
+        $php->setCategory($manager->merge($prog_category));
+        $manager->persist($php);
         
         $sql = new Subject();
         $sql->setName('SQL');
         $sql->setDescription('SQL often referred to as Structured Query Language, is a database computer language designed for managing data in relational database management systems (RDBMS), and originally based upon relational algebra and calculus.');
         $sql->setCategory($manager->merge($bdd_category));
         $manager->persist($sql);
+        
+        $this->addReference("php",$php);
 
         $manager->flush();
         

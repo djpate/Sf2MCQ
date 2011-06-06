@@ -11,8 +11,7 @@ Sf2MCQ\CoreBundle\Entity\Interview:
       type: string
       length: 255
     duration:
-      type: string
-      length: 255
+      type: integer
   oneToMany:
     questions:
       targetEntity: Question
