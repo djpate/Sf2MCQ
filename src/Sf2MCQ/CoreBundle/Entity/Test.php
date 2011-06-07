@@ -2,10 +2,12 @@
 
 namespace Sf2MCQ\CoreBundle\Entity;
 
+use Sf2MCQ\CoreBundle\Model\TestModel;
+
 /**
  * Sf2MCQ\CoreBundle\Entity\Test
  */
-class Test
+class Test extends TestModel
 {
     /**
      * @var integer $id
@@ -127,7 +129,7 @@ class Test
         return $this->candidate;
     }
     /**
-     * @var Sf2MCQ\CoreBundle\Entity\Test
+     * @var Sf2MCQ\CoreBundle\Entity\Interview
      */
     private $interview;
 
@@ -135,9 +137,9 @@ class Test
     /**
      * Set interview
      *
-     * @param Sf2MCQ\CoreBundle\Entity\Test $interview
+     * @param Sf2MCQ\CoreBundle\Entity\Interview $interview
      */
-    public function setInterview(\Sf2MCQ\CoreBundle\Entity\Test $interview)
+    public function setInterview(\Sf2MCQ\CoreBundle\Entity\Interview $interview)
     {
         $this->interview = $interview;
     }

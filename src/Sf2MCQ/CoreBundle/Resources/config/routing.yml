@@ -7,5 +7,13 @@ subject:
   defaults: { _controller: Sf2MCQCoreBundle:Subject:index }
 
 start_interview:
-  pattern: /interview/{id}/
+  pattern: /interview/{id}
   defaults: { _controller: Sf2MCQCoreBundle:Interview:index }
+  
+test:
+  pattern: /test/{index}
+  defaults: { _controller: Sf2MCQCoreBundle:Test:show }
+
+test_finished:
+  pattern: /test_finished
+  defaults: { _controller: Sf2MCQCoreBundle:Test:finished }

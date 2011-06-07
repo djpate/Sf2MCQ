@@ -1,0 +1,21 @@
+{% extends 'Sf2MCQCoreBundle::base.html.twig' %}
+{% block body %}
+	<div class="one-fourth">
+		<h4>Liste des questions</h4>
+		<ul>
+			{% for key, object in test.interview.questions %}
+				<li {% if(object.id == question.id) %}class="current_question"{%endif%}><a href="{{ path("test", { 'index': key+1 }) }}">Question {{ key + 1 }}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="question_container">
+		<h3 class="colored">{{ question.content }}</h3>
+		<div class="horizontal-line"></div>
+		<ul>
+			{% for answer in question.answers %}
+			<li class="possible_answer"><input type="checkbox" />{{ answer.content }}</li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endblock %}
+

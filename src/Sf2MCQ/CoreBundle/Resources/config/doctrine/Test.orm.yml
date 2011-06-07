@@ -11,6 +11,7 @@ Sf2MCQ\CoreBundle\Entity\Test:
       type: datetime
     end:
       type: datetime
+      nullable: true
   oneToMany:
     propositions:
       targetEntity: Proposition

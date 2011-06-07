@@ -26,16 +26,25 @@ class InterviewController extends Controller
 		$request = $this->get('request');
 		if($request->getMethod()=='POST'){
 			$form->bindRequest($request);
+			
 			if ($form->isValid()) {
-				
+				/* le formulaire est valide du coup on creer le test en base
+				 * on save le test en session et on redirige vers la page de test */
 				$em->persist($candidat);
+				$em->flush();
 				
 				$test = new Test();
 				$test->setInterview($em->merge($interview));
 				$test->setCandidate($em->merge($candidat));
-				$test->setStart(date("Y-m-d G:i:s"));
+				$test->setStart(new \Datetime());
 				
 				$em->persist($test);
+				$em->flush();
+				
+				$session = $this->get('session');
+				$session->set('test',$test->getId());
+				
+				return $this->redirect($this->generateUrl('test', array("index"=>1))); // l'index correspond non pas a un id de question mais a la premiere question du test
 				
 			}
 		}

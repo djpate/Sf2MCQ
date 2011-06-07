@@ -9,7 +9,7 @@ namespace Sf2MCQ\CoreBundle\Model;
 		}
 		
 		public function nbQuestion(){
-			return count($this->getQuestions())." questions";
+			return count($this->getQuestions());
 		}
 	
 	}
