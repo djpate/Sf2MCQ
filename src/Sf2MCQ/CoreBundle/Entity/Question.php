@@ -126,4 +126,29 @@ class Question
     {
         return $this->interview;
     }
+    /**
+     * @var text $code
+     */
+    private $code;
+
+
+    /**
+     * Set code
+     *
+     * @param text $code
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+    }
+
+    /**
+     * Get code
+     *
+     * @return text $code
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
 }

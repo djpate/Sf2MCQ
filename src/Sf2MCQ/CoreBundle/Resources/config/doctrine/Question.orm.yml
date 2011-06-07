@@ -9,7 +9,8 @@ Sf2MCQ\CoreBundle\Entity\Question:
   fields:
     content:
       type: text
-      length: 255
+    code:
+      type: text
     points:
       type: integer
   oneToMany:

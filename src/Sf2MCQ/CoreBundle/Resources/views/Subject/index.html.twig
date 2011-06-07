@@ -41,7 +41,7 @@
 					{{ test.prettyDuration }}
 				</td>
 				<td>
-					<a class="cool-button round blue" href="#">Demarrer le test</a>
+					<a class="cool-button round blue" href="{{ path("start_interview", { 'id': test.id } ) }}">Demarrer le test</a>
 				</td>
 			</tr>
 		{% endfor %}
