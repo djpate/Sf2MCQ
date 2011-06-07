@@ -27,6 +27,8 @@ class LoadInterviewData extends AbstractFixture implements OrderedFixtureInterfa
 		
 		$manager->persist($php_rookie);
 		
+		$this->addReference("php_beginner",$php_beginner);
+		
 		$manager->flush();
 
     }

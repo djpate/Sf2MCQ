@@ -11,6 +11,7 @@ Sf2MCQ\CoreBundle\Entity\Question:
       type: text
     code:
       type: text
+      nullable: true
     points:
       type: integer
   oneToMany:

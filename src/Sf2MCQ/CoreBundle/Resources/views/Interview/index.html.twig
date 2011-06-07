@@ -2,7 +2,14 @@
 {% block body %}
 	<div class="one">
 		<div class="intro-pages">
-			<h3>Commencer le test <span class="colored">{{ interview.name }}</span></h3>
+			<h3><span class="colored">{{ interview.name }}</span></h3>
+			<h4>Ce test comporte {{ interview.nbQuestion }} questions et dure {{ interview.prettyDuration }}</h4>
 		</div>
+	</div>
+	<div class="one">
+		<form action="{{ path('start_interview' , { 'id':interview.id } ) }}" method="post" {{ form_enctype(form) }}>
+			{{ form_widget(form) }}
+			<input type="submit" />
+		</form>
 	</div>
 {% endblock %}
