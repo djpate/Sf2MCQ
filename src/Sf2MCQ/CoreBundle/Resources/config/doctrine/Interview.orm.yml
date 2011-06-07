@@ -16,6 +16,9 @@ Sf2MCQ\CoreBundle\Entity\Interview:
     questions:
       targetEntity: Question
       mappedBy: interview
+    tests:
+      targetEntity: Test
+      mappedBy: interview
   manyToOne:
     level:
       targetEntity: Level

@@ -1,0 +1,6 @@
+Sf2MCQ\CoreBundle\Entity\Candidate:
+  properties:
+    firstname:
+      - NotBlank: ~
+    lastname:
+      - NotBlank: ~

@@ -153,4 +153,29 @@ class Interview extends InterviewModel
     {
         return $this->subject;
     }
+    /**
+     * @var Sf2MCQ\CoreBundle\Entity\Test
+     */
+    private $tests;
+
+
+    /**
+     * Add tests
+     *
+     * @param Sf2MCQ\CoreBundle\Entity\Test $tests
+     */
+    public function addTests(\Sf2MCQ\CoreBundle\Entity\Test $tests)
+    {
+        $this->tests[] = $tests;
+    }
+
+    /**
+     * Get tests
+     *
+     * @return Doctrine\Common\Collections\Collection $tests
+     */
+    public function getTests()
+    {
+        return $this->tests;
+    }
 }

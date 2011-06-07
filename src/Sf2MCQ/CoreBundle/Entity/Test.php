@@ -126,4 +126,29 @@ class Test
     {
         return $this->candidate;
     }
+    /**
+     * @var Sf2MCQ\CoreBundle\Entity\Test
+     */
+    private $interview;
+
+
+    /**
+     * Set interview
+     *
+     * @param Sf2MCQ\CoreBundle\Entity\Test $interview
+     */
+    public function setInterview(\Sf2MCQ\CoreBundle\Entity\Test $interview)
+    {
+        $this->interview = $interview;
+    }
+
+    /**
+     * Get interview
+     *
+     * @return Sf2MCQ\CoreBundle\Entity\Test $interview
+     */
+    public function getInterview()
+    {
+        return $this->interview;
+    }
 }

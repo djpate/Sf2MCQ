@@ -5,6 +5,7 @@ namespace Sf2MCQ\CoreBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Sf2MCQ\CoreBundle\Entity\Candidate;
+use Sf2MCQ\CoreBundle\Entity\Test;
 
 
 class InterviewController extends Controller
@@ -19,15 +20,16 @@ class InterviewController extends Controller
 			throw new NotFoundHttpException('Ce test n\'existe pas.');
 		}
 		
-		$form = $this->createFormBuilder($candidat)
-					->add("firstname")
-					->add("lastname")
-					->getForm();
+		$form = $this->createForm(new CandidateType(), $candidate);
 		
 		$request = $this->get('request');
 		if($request->getMethod()=='POST'){
 			$form->bindRequest($request);
 			if ($form->isValid()) {
+				
+				$em->persist($candidat);
+				$test = new Test();
+				
 			}
 		}
 
