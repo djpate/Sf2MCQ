@@ -16,6 +16,18 @@
 			<li class="possible_answer"><input type="checkbox" />{{ answer.content }}</li>
 			{% endfor %}
 		</ul>
+		<div class="horizontal-line"></div>
+			<div style="float:left">
+				{% if(index > 1) %}
+					<a class="cool-button round blue"> << Précédente</a>
+				{% endif %}
+				{% if(index < test.interview.nbQuestion) %}
+					<a class="cool-button round blue">Suivante >></a>
+				{% endif %}
+			</div>
+			<div style="float:right">
+				<a class="cool-button round red">Enregistrer</a>
+			</div>
 	</div>
 {% endblock %}
 
