@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Sf2MCQ\CoreBundle\Entity\Candidate;
 use Sf2MCQ\CoreBundle\Entity\Test;
+use Sf2MCQ\CoreBundle\Form\CandidateType;
 
 
 class InterviewController extends Controller
@@ -20,7 +21,7 @@ class InterviewController extends Controller
 			throw new NotFoundHttpException('Ce test n\'existe pas.');
 		}
 		
-		$form = $this->createForm(new CandidateType(), $candidate);
+		$form = $this->createForm(new CandidateType(), $candidat);
 		
 		$request = $this->get('request');
 		if($request->getMethod()=='POST'){
@@ -28,7 +29,13 @@ class InterviewController extends Controller
 			if ($form->isValid()) {
 				
 				$em->persist($candidat);
+				
 				$test = new Test();
+				$test->setInterview($em->merge($interview));
+				$test->setCandidate($em->merge($candidat));
+				$test->setStart(date("Y-m-d G:i:s"));
+				
+				$em->persist($test);
 				
 			}
 		}

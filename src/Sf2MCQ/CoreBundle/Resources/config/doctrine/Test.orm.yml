@@ -20,6 +20,6 @@ Sf2MCQ\CoreBundle\Entity\Test:
       targetEntity: Candidate
       inversedBy: tests
     interview:
-      targetEntity: Test
+      targetEntity: Interview
       inversedBy: tests
     
