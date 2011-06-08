@@ -13,6 +13,10 @@ start_interview:
 test:
   pattern: /test/{index}
   defaults: { _controller: Sf2MCQCoreBundle:Test:show }
+  
+submit_answer:
+  pattern: /test-answer
+  defaults: { _controller: Sf2MCQCoreBundle:Test:answer }
 
 test_finished:
   pattern: /test_finished

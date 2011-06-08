@@ -9,6 +9,10 @@ Sf2MCQ\CoreBundle\Entity\Proposition:
   oneToOne:
     question:
       targetEntity: Question
+  manyToOne:
+    test:
+      targetEntity: Test
+      inversedBy: propositions
   manyToMany:
     answers:
       targetEntity: Answer

@@ -4,12 +4,68 @@ namespace Sf2MCQ\CoreBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-
+use Sf2MCQ\CoreBundle\Entity\Proposition;
 
 class TestController extends Controller
 {
+	
     public function showAction($index)
     {	
+		$verif = $this->verification($index);
+		if(!is_null($verif)){
+			return $verif;
+		}
+
+        return $this->render('Sf2MCQCoreBundle:Test:show.html.twig' , array( "test"=>$this->test , "question"=>$this->question , "index"=>$index ) );
+    }
+    
+    public function answerAction(){
+		
+		$request = $this->get('request');
+		$em = $this->get('doctrine')->getEntityManager();
+		$index = $request->request->get('index');
+		
+		$verif = $this->verification($index);
+		if(!is_null($verif)){
+			return $verif;
+		}
+		
+		/* on verifie qu'il y a au moins une réponse */
+		if( !$request->request->has('answers') ){
+			$this->get('session')->setFlash('error', 'Vous n\'avez selectionné aucune réponse');
+			return $this->redirect( $this->generateUrl("test", array("index"=>$index) ) );
+		} 
+		
+		/* si le candidat a deja repondu a cette question on drop ces réponses */
+		$proposition = $em->getRepository('Sf2MCQCoreBundle:Proposition')->findOneBy( array('test' => $this->test->getId(), 'question'=> $this->question->getId() ) );
+		if(is_object($proposition)){
+			$em->remove($proposition);
+			$em->flush();
+		}
+		
+		/* on save les nouvelles réponses */
+		$proposition = new Proposition();
+		$proposition->setQuestion($em->merge($this->question));
+		$proposition->setTest($em->merge($this->test));
+		
+		$answers = $request->request->get('answers');
+		foreach($answers as $answer){
+			$entity = $em->getRepository('Sf2MCQCoreBundle:Answer')->find($answer);
+			if($entity){
+				$proposition->addAnswers($entity);
+			}
+		}
+		
+		$em->persist($proposition);
+		$em->flush();
+		
+		return $this->redirect($this->generateUrl("test",array("index"=>$index+1)));
+				
+	}
+	
+	private function verification($index){
+		$ret = null;
+		
 		$em = $this->get('doctrine')->getEntityManager();
 		$session = $this->get('session');
 		
@@ -19,28 +75,31 @@ class TestController extends Controller
 		}
 		
 		/* verif que le test exist */
-		$test = $em->getRepository('Sf2MCQCoreBundle:Test')->find($session->get('test'));
-		if(!$test){
+		$this->test = $em->getRepository('Sf2MCQCoreBundle:Test')->find($session->get('test'));
+		
+		if(!$this->test){
 			return new \Exception("Current test does not exist");
 		}
 		
 		/* verif que le temps imparti n'est pas fini */
-		if($test->isOver()){
+		if($this->test->isOver()){
 			return $this->redirect($this->generateUrl("test_finished"));
 		}
 		
 		/* verif que l'index demandé existe bien */
-		if($index > $test->getInterview()->nbQuestion()){
+		if($index > $this->test->getInterview()->nbQuestion()){
 			throw new NotFoundHttpException();
 		}
 		
-		$questions = $test->getInterview()->getQuestions();
-		$question = $questions[$index-1];
-
-        return $this->render('Sf2MCQCoreBundle:Test:show.html.twig' , array( "test"=>$test , "question"=>$question ) );
-    }
+		$questions = $this->test->getInterview()->getQuestions();
+		$this->question = $questions[$index-1];
+		
+		return $ret;
+		
+	}
     
     public function finishedAction(){
 		return $this->render('Sf2MCQCoreBundle:Test:finished.html.twig');
 	}
+	
 }

@@ -25,6 +25,11 @@
 						</div>
 					</div>
 					<div id="content">
+						{% if app.session.hasFlash('error') %}
+							<div class="simple-error">
+								{{ app.session.flash('error') }}
+							</div>
+						{% endif %}
 						{% block body %}{% endblock %}
 					</div>
 					<div id="copyright"> 

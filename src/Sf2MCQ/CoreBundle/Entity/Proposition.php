@@ -76,4 +76,29 @@ class Proposition
     {
         return $this->answers;
     }
+    /**
+     * @var Sf2MCQ\CoreBundle\Entity\Test
+     */
+    private $test;
+
+
+    /**
+     * Set test
+     *
+     * @param Sf2MCQ\CoreBundle\Entity\Test $test
+     */
+    public function setTest(\Sf2MCQ\CoreBundle\Entity\Test $test)
+    {
+        $this->test = $test;
+    }
+
+    /**
+     * Get test
+     *
+     * @return Sf2MCQ\CoreBundle\Entity\Test $test
+     */
+    public function getTest()
+    {
+        return $this->test;
+    }
 }
