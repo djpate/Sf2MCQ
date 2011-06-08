@@ -26,7 +26,7 @@
 			{% endif %}
 			<ul>
 				{% for answer in question.answers %}
-				<li class="possible_answer"><input type="checkbox" name="answers[]" value="{{ answer.id }}" />{{ answer.content }}</li>
+				<li class="possible_answer"><input type="checkbox" name="answers[]" value="{{ answer.id }}" {% if( test.isSelected(question,answer) ) %}checked{% endif %}/>{{ answer.content }}</li>
 				{% endfor %}
 			</ul>
 			<div class="horizontal-line"></div>
