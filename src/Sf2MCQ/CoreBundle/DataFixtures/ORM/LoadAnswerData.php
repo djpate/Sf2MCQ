@@ -36,7 +36,6 @@ class LoadAnswerData extends AbstractFixture implements OrderedFixtureInterface
 		$answer4->setValid(1);
 		$answer4->setQuestion($manager->merge($this->getReference("question_array")));
 		$manager->persist($answer4);
-		
 		$manager->flush();
 		
 		$answer5 = new Answer();
@@ -71,7 +70,7 @@ class LoadAnswerData extends AbstractFixture implements OrderedFixtureInterface
     }
     
     public function getOrder(){
-		return 6;
+		return 7;
 	}
 }
 

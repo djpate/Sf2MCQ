@@ -17,23 +17,35 @@ class LoadQuestionData extends AbstractFixture implements OrderedFixtureInterfac
 		$question_array->setInterview($manager->merge($this->getReference("php_beginner")));
 		
 		$manager->persist($question_array);
-		
+		$manager->flush();
+				
 		$question_file = new Question();
 		$question_file->setContent("Qu'elle fonctions peut on utiliser pour lire le contenu d'un fichier");
 		$question_file->setPoints("2");
 		$question_file->setInterview($manager->merge($this->getReference("php_beginner")));
 		
 		$manager->persist($question_file);
+		$manager->flush();
+		
+		$question_code = new Question();
+		$question_code->setContent("Que renvoi le code suivant ?");
+		$question_code->setPoints("2");
+		/*//$question_code->setLanguage($manager->merge($this->getReference("lang_Php")));
+		//$question_code->setCode('<?php echo "hello"; ?>');*/
+		$question_code->setInterview($manager->merge($this->getReference("php_beginner")));
+		
+		$manager->persist($question_code);
+		$manager->flush();
 		
 		$this->addReference("question_array",$question_array);
 		$this->addReference("question_file",$question_file);
+		$this->addReference("question_code",$question_code);
 		
-		$manager->flush();
 
     }
     
     public function getOrder(){
-		return 5;
+		return 6;
 	}
 }
 
