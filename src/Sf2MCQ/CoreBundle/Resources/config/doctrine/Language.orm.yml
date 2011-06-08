@@ -1,0 +1,13 @@
+Sf2MCQ\CoreBundle\Entity\Language:
+  type: entity
+  table: language
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    name:
+      type: string
+    code:
+      type: string

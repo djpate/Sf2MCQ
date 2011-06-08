@@ -151,4 +151,29 @@ class Question
     {
         return $this->code;
     }
+    /**
+     * @var Sf2MCQ\CoreBundle\Entity\Language
+     */
+    private $language;
+
+
+    /**
+     * Set language
+     *
+     * @param Sf2MCQ\CoreBundle\Entity\Language $language
+     */
+    public function setLanguage(\Sf2MCQ\CoreBundle\Entity\Language $language)
+    {
+        $this->language = $language;
+    }
+
+    /**
+     * Get language
+     *
+     * @return Sf2MCQ\CoreBundle\Entity\Language $language
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
 }

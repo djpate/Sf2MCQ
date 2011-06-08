@@ -22,4 +22,7 @@ Sf2MCQ\CoreBundle\Entity\Question:
     interview:
       targetEntity: Interview
       inversedBy: questions
+    language:
+      targetEntity: Language
+      inversedBy: questions
       
