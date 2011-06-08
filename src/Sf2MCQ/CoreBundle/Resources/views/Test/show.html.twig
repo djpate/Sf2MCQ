@@ -1,6 +1,11 @@
 {% extends 'Sf2MCQCoreBundle::base.html.twig' %}
 {% block body %}
 	<div class="one-fourth">
+		<h4>Temps restant</h4>	
+		<div class="countdown_container">
+			<div id="countdown_div">
+			</div>
+		</div>
 		<h4>Liste des questions</h4>
 		<ul>
 			{% for key, object in test.interview.questions %}
@@ -19,15 +24,27 @@
 				{% endfor %}
 			</ul>
 			<div class="horizontal-line"></div>
-			<div style="float:right">
+			<div style="float:right;">
 				<a class="cool-button round red">Enregistrer</a>
+			</div>
+			<div style="float:right;margin-right:20px;">
+				<a class="cool-button round blue" >Terminer le test</a>
 			</div>
 		</form>
 	</div>
 <script>
+
+	$(".blue").click(function(){
+		if(confirm("Etes vous sure de vouloir terminer votre test ?")){
+			location.href = '{{ path('test_finished') }}';
+		}
+	});
+
 	$(".red").click(function(){
 		$("#answer")[0].submit();
 	});
+	
+	javascript_countdown.init({{ test.timeleft }}, 'countdown_div' , '{{ path('test_finished') }}');
 </script>
 {% endblock %}
 

@@ -44,13 +44,28 @@ class LoadAnswerData extends AbstractFixture implements OrderedFixtureInterface
 		$answer5->setValid(0);
 		$answer5->setQuestion($manager->merge($this->getReference("question_array")));
 		$manager->persist($answer5);
+		$manager->flush();
 		
 		$answer6 = new Answer();
 		$answer6->setContent("array_ptr");
 		$answer6->setValid(0);
 		$answer6->setQuestion($manager->merge($this->getReference("question_array")));
 		$manager->persist($answer6);
+		$manager->flush();
 		
+		
+		$answer7 = new Answer();
+		$answer7->setContent("file_get_content");
+		$answer7->setValid(0);
+		$answer7->setQuestion($manager->merge($this->getReference("question_file")));
+		$manager->persist($answer7);
+		$manager->flush();
+		
+		$answer8 = new Answer();
+		$answer8->setContent("file_put_content");
+		$answer8->setValid(0);
+		$answer8->setQuestion($manager->merge($this->getReference("question_file")));
+		$manager->persist($answer8);
 		$manager->flush();
 
     }

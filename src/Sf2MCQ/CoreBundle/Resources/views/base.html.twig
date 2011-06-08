@@ -6,6 +6,7 @@
 		<link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />
 		<script type="text/javascript" src="/js/jquery.js"></script>
 		<script type="text/javascript" src="/js/script.js"></script>
+		<script type="text/javascript" src="/js/countdown.js"></script>
 	</head>
 	<body>
 		<div id="wrapper">
@@ -28,6 +29,11 @@
 						{% if app.session.hasFlash('error') %}
 							<div class="simple-error">
 								{{ app.session.flash('error') }}
+							</div>
+						{% endif %}
+						{% if app.session.hasFlash('notice') %}
+							<div class="simple-notice">
+								{{ app.session.flash('notice')|raw }}
 							</div>
 						{% endif %}
 						{% block body %}{% endblock %}

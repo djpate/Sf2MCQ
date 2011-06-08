@@ -59,12 +59,16 @@ class TestController extends Controller
 		$em->persist($proposition);
 		$em->flush();
 		
-		return $this->redirect($this->generateUrl("test",array("index"=>$index+1)));
+		if($index + 1 > $this->test->getInterview()->nbQuestion()){
+			$this->get('session')->setFlash('notice', 'Vous êtes arrivé a la fin du test, vous pouvez encore modifier vos réponses ou terminer le test en cliquant sur <strong>terminer le test</strong>');
+			return $this->redirect($this->generateUrl("test",array("index"=>$index)));
+		} else {
+			return $this->redirect($this->generateUrl("test",array("index"=>$index+1)));
+		}
 				
 	}
 	
 	private function verification($index){
-		$ret = null;
 		
 		$em = $this->get('doctrine')->getEntityManager();
 		$session = $this->get('session');
@@ -94,7 +98,7 @@ class TestController extends Controller
 		$questions = $this->test->getInterview()->getQuestions();
 		$this->question = $questions[$index-1];
 		
-		return $ret;
+		return null;
 		
 	}
     
