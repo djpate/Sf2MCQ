@@ -37,7 +37,7 @@ class TestController extends Controller
 		} 
 		
 		/* si le candidat a deja repondu a cette question on drop ces réponses */
-		$proposition = $em->getRepository('Sf2MCQCoreBundle:Proposition')->findOneBy( array('test' => $this->test->getId(), 'question'=> $this->question->getId() ) );
+		$proposition = $em->getRepository('Sf2MCQCoreBundle:Proposition')->findOneBy( array('test'=>$this->test->getId(), 'question'=>$this->question->getId()) );
 		if(is_object($proposition)){
 			$em->remove($proposition);
 			$em->flush();
@@ -82,7 +82,7 @@ class TestController extends Controller
 		$this->test = $em->getRepository('Sf2MCQCoreBundle:Test')->find($session->get('test'));
 		
 		if(!$this->test){
-			return new \Exception("Current test does not exist");
+			return $this->redirect($this->generateUrl("homepage"));
 		}
 		
 		/* verif que le temps imparti n'est pas fini */
@@ -103,7 +103,28 @@ class TestController extends Controller
 	}
     
     public function finishedAction(){
-		return $this->render('Sf2MCQCoreBundle:Test:finished.html.twig');
+		
+		$em = $this->get('doctrine')->getEntityManager();
+		$session = $this->get('session');
+		
+		/* verif qu'un test a bien été demarrer */
+		if(!$session->has('test')){
+			return $this->redirect($this->generateUrl("homepage"));
+		}
+		
+		/* verif que le test exist */
+		$test = $em->getRepository('Sf2MCQCoreBundle:Test')->find($session->get('test'));
+		if(!$test){
+			return new \Exception("Current test does not exist");
+		}
+		
+		$test->setEnd(new \datetime());
+		$em->persist($test);
+		$em->flush();
+		
+		$session->remove("test");
+		
+		return $this->render('Sf2MCQCoreBundle:Test:finished.html.twig' , array("test"=>$test) );
 	}
 	
 }

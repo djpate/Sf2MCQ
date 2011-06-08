@@ -6,13 +6,13 @@ Sf2MCQ\CoreBundle\Entity\Proposition:
       type: integer
       generator:
         strategy: AUTO
-  oneToOne:
-    question:
-      targetEntity: Question
   manyToOne:
     test:
       targetEntity: Test
       inversedBy: propositions
+    question:
+      targetEntity: Question
+      inversedBy: questions
   manyToMany:
     answers:
       targetEntity: Answer
@@ -24,7 +24,6 @@ Sf2MCQ\CoreBundle\Entity\Proposition:
         inverseJoinColumns:
           answer_id:
             referencedColumnName: id
-            unique: true
       
       
 

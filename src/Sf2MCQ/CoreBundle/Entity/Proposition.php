@@ -101,4 +101,29 @@ class Proposition
     {
         return $this->test;
     }
+    /**
+     * @var Sf2MCQ\CoreBundle\Entity\Candidate
+     */
+    private $candidate;
+
+
+    /**
+     * Set candidate
+     *
+     * @param Sf2MCQ\CoreBundle\Entity\Candidate $candidate
+     */
+    public function setCandidate(\Sf2MCQ\CoreBundle\Entity\Candidate $candidate)
+    {
+        $this->candidate = $candidate;
+    }
+
+    /**
+     * Get candidate
+     *
+     * @return Sf2MCQ\CoreBundle\Entity\Candidate $candidate
+     */
+    public function getCandidate()
+    {
+        return $this->candidate;
+    }
 }
