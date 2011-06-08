@@ -18,6 +18,12 @@
 			<input type="hidden" name="index" value="{{ index }}" />
 			<h3 class="colored">{{ question.content }}</h3>
 			<div class="horizontal-line"></div>
+			{% if(question.language) %}
+			<div style="clear:both">
+				<pre class="brush: {{ question.language.code|lower }}">{{ question.code }}</pre>
+			</div>
+			<div class="horizontal-line"></div>
+			{% endif %}
 			<ul>
 				{% for answer in question.answers %}
 				<li class="possible_answer"><input type="checkbox" name="answers[]" value="{{ answer.id }}" />{{ answer.content }}</li>
@@ -32,8 +38,11 @@
 			</div>
 		</form>
 	</div>
+{% if(question.language) %}
+	<script type="text/javascript" src="/js/shScripts/shBrush{{ question.language.code }}.js"></script>
+{% endif %}
 <script>
-
+	SyntaxHighlighter.all();
 	$(".blue").click(function(){
 		if(confirm("Etes vous sure de vouloir terminer votre test ?")){
 			location.href = '{{ path('test_finished') }}';
