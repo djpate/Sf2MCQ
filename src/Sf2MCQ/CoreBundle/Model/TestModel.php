@@ -32,7 +32,7 @@ namespace Sf2MCQ\CoreBundle\Model;
 			$stmt->bindValue(2, $q->getId() );
 			$stmt->bindValue(3, $a->getId() );
 			$res = $stmt->execute();
-			if($res==1){
+			if($res=1){
 				return true;
 			} else {
 				return false;
