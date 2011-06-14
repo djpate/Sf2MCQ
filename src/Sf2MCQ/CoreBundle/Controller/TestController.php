@@ -43,10 +43,10 @@ class TestController extends Controller
 				$em->flush();
 
 				
-				$questions = $this->test->getInterview()->getQuestions();
-				//$current_index = array_search($this->question,$questions);
+				$questions = $this->test->getInterview()->getQuestions()->toArray();
+				$current_index = array_search($this->question,$questions);
 				
-				if( true ){
+				if( $current_index + 1 == count($questions) ){
 					$this->get('session')->setFlash('notice', 'Vous êtes arrivé a la fin du test, vous pouvez encore modifier vos réponses ou terminer le test en cliquant sur <strong>terminer le test</strong>');
 					return $this->redirect($this->generateUrl("test",array("id"=>$this->question->getId())));
 				} else {
