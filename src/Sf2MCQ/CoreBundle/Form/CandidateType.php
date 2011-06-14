@@ -8,8 +8,8 @@
 	{
 		public function buildForm(FormBuilder $builder, array $options)
 		{
-			$builder->add('firstname');
-			$builder->add('lastname');
+			$builder->add('firstname','text',array('label'=>'Prénom'));
+			$builder->add('lastname','text',array('label'=>'Nom'));
 		}
 	}
 	

@@ -3,13 +3,17 @@
 	<div class="one">
 		<div class="intro-pages">
 			<h3><span class="colored">{{ interview.name }}</span></h3>
-			<h4>Ce test comporte {{ interview.nbQuestion }} et dure {{ interview.prettyDuration }}</h4>
+			<h4>Ce test comporte {{ interview.nbQuestion }} questions et dure {{ interview.prettyDuration }}</h4>
 		</div>
 	</div>
 	<div class="one">
-		<form action="{{ path('start_interview' , { 'id':interview.id } ) }}" method="post" {{ form_enctype(form) }}>
+		<form id="register" action="{{ path('start_interview' , { 'id':interview.id } ) }}" method="post" {{ form_enctype(form) }}>
+			<h1>Avant de commencer votre test...</h1>
 			{{ form_widget(form) }}
-			<input type="submit" />
+			<div style="float:right;margin:10px 48px 10px 0">
+				<a class="cool-button round blue" href="">Demarrer le test</a>
+			</div>
+			<div style="clear:both"></div>
 		</form>
 	</div>
 {% endblock %}

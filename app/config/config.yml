@@ -55,3 +55,11 @@ swiftmailer:
 jms_security_extra:
     secure_controllers:  true
     secure_all_services: false
+    
+services:
+   sf2mcq.core.admin.category:
+      class: Sf2MCQ\CoreBundle\Admin\CategoryAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: sonata_blog, label: category }
+      arguments: [null, Sf2MCQ\CoreBundle\Entity\Category, Sf2MCQCoreBundle:CategoryAdmin]
+

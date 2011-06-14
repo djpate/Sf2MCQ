@@ -1124,3 +1124,41 @@ box-shadow: 0 1px 5px 1px rgba(0,0,0,0.15), inset 0 1px 0 #b576ad;
 #answer label{
 	display: inline;
 }
+
+form#register {
+	-moz-border-radius: 5px 5px 5px 5px;
+    -moz-box-shadow: 0 0 10px #4E707C;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 8px solid #EEEEEE;
+    margin: 0 auto;
+    position: relative;
+    text-align: left;
+    width: 400px;
+}
+
+form#register h1{
+	background: none repeat scroll 0 0 #0092C8;
+    border-bottom: 1px solid #007DAB;
+    font-weight: bold;
+    color: #FFFFFF;
+    font-size: 14px;
+    margin: 0 0 1.5em;
+    padding: 18px 23px;
+    text-shadow: 0 1px 0 #007DAB;
+    line-height: normal!important;
+}
+
+form#register input{
+	-moz-box-shadow: 0 0 5px #CCCCCC inset;
+    border: 1px solid #CCCCCC;
+    font-size: 12px;
+    line-height: 1em;
+    padding: 4px;
+    width: 220px;
+}
+
+form#register label{
+	padding-left: 2em;
+	display: inline-block;
+	width: 100px;
+}
