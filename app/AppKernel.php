@@ -22,6 +22,10 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Sf2MCQ\CoreBundle\Sf2MCQCoreBundle(),
             new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
+            new Sonata\jQueryBundle\SonatajQueryBundle(),
+			new Sonata\BluePrintBundle\SonataBluePrintBundle(),
+			new Sonata\AdminBundle\SonataAdminBundle(),
+			new Knplabs\Bundle\MenuBundle\KnplabsMenuBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
