@@ -5,70 +5,63 @@ namespace Sf2MCQ\CoreBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Sf2MCQ\CoreBundle\Entity\Proposition;
+use Sf2MCQ\CoreBundle\Form\PropositionType;
 
 class TestController extends Controller
 {
 	
-    public function showAction($index)
+    public function showAction($id)
     {	
-		$verif = $this->verification($index);
+		$verif = $this->verification($id);
 		if(!is_null($verif)){
 			return $verif;
 		}
+		
+		$form = $this->createForm(new PropositionType($this->question), $this->proposition);
 
-        return $this->render('Sf2MCQCoreBundle:Test:show.html.twig' , array( "test"=>$this->test , "question"=>$this->question , "index"=>$index ) );
+        return $this->render('Sf2MCQCoreBundle:Test:show.html.twig' , array( "form"=> $form->createView(), "test"=>$this->test , "question"=>$this->question ) );
     }
     
-    public function answerAction(){
+    public function answerAction($id){
 		
 		$request = $this->get('request');
-		$em = $this->get('doctrine')->getEntityManager();
-		$index = $request->request->get('index');
 		
-		$verif = $this->verification($index);
-		if(!is_null($verif)){
-			return $verif;
-		}
-		
-		/* on verifie qu'il y a au moins une réponse */
-		if( !$request->request->has('answers') ){
-			$this->get('session')->setFlash('error', 'Vous n\'avez selectionné aucune réponse');
-			return $this->redirect( $this->generateUrl("test", array("index"=>$index) ) );
-		} 
-		
-		/* si le candidat a deja repondu a cette question on drop ces réponses */
-		$proposition = $em->getRepository('Sf2MCQCoreBundle:Proposition')->findOneBy( array('test'=>$this->test->getId(), 'question'=>$this->question->getId()) );
-		if(is_object($proposition)){
-			$em->remove($proposition);
-			$em->flush();
-		}
-		
-		/* on save les nouvelles réponses */
-		$proposition = new Proposition();
-		$proposition->setQuestion($em->merge($this->question));
-		$proposition->setTest($em->merge($this->test));
-		
-		$answers = $request->request->get('answers');
-		foreach($answers as $answer){
-			$entity = $em->getRepository('Sf2MCQCoreBundle:Answer')->find($answer);
-			if($entity){
-				$proposition->addAnswers($entity);
+		if ($request->getMethod() == 'POST'){
+			
+			$verif = $this->verification($id);
+			if(!is_null($verif)){
+				return $verif;
 			}
-		}
-		
-		$em->persist($proposition);
-		$em->flush();
-		
-		if($index + 1 > $this->test->getInterview()->nbQuestion()){
-			$this->get('session')->setFlash('notice', 'Vous êtes arrivé a la fin du test, vous pouvez encore modifier vos réponses ou terminer le test en cliquant sur <strong>terminer le test</strong>');
-			return $this->redirect($this->generateUrl("test",array("index"=>$index)));
-		} else {
-			return $this->redirect($this->generateUrl("test",array("index"=>$index+1)));
+			
+			$form = $this->createForm(new PropositionType($this->question), $this->proposition);
+			$form->bindRequest($request);
+			
+			if ($form->isValid()) {
+				
+				$em = $this->get('doctrine')->getEntityManager();
+				$em->persist($this->proposition);
+				$em->flush();
+
+				
+				$questions = $this->test->getInterview()->getQuestions();
+				//$current_index = array_search($this->question,$questions);
+				
+				if( true ){
+					$this->get('session')->setFlash('notice', 'Vous êtes arrivé a la fin du test, vous pouvez encore modifier vos réponses ou terminer le test en cliquant sur <strong>terminer le test</strong>');
+					return $this->redirect($this->generateUrl("test",array("id"=>$this->question->getId())));
+				} else {
+					$next_index = $current_index + 1;
+					$next_question = $questions[$next_index];
+					return $this->redirect($this->generateUrl("test",array("id"=>$next_question->getId())));
+				}
+				
+			}
+			
 		}
 				
 	}
 	
-	private function verification($index){
+	private function verification($id){
 		
 		$em = $this->get('doctrine')->getEntityManager();
 		$session = $this->get('session');
@@ -90,13 +83,21 @@ class TestController extends Controller
 			return $this->redirect($this->generateUrl("test_finished"));
 		}
 		
-		/* verif que l'index demandé existe bien */
-		if($index > $this->test->getInterview()->nbQuestion()){
+		/* verif que la question demandé existe bien */
+		$this->question = $em->getRepository('Sf2MCQCoreBundle:Question')->find($id);
+		
+		if(!$this->question){
 			throw new NotFoundHttpException();
 		}
 		
-		$questions = $this->test->getInterview()->getQuestions();
-		$this->question = $questions[$index-1];
+		/* on setup la proposition */
+		
+		$this->proposition = $em->getRepository('Sf2MCQCoreBundle:Proposition')->findOneBy( array('test'=>$this->test->getId(), 'question'=>$this->question->getId()) );
+		if(!$this->proposition){
+			$this->proposition = new Proposition();
+			$this->proposition->setQuestion($this->question);
+			$this->proposition->setTest($this->test);
+		}
 		
 		return null;
 		

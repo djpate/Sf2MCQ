@@ -44,7 +44,10 @@ class InterviewController extends Controller
 				$session = $this->get('session');
 				$session->set('test',$test->getId());
 				
-				return $this->redirect($this->generateUrl('test', array("index"=>1))); // l'index correspond non pas a un id de question mais a la premiere question du test
+				$questions = $interview->getQuestions();
+				$first_question = $questions[0];
+				
+				return $this->redirect($this->generateUrl('test', array("id"=>$first_question->getId())) );
 				
 			}
 		}

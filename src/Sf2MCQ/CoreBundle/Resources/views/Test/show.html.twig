@@ -9,34 +9,28 @@
 		<h4>Liste des questions</h4>
 		<ul>
 			{% for key, object in test.interview.questions %}
-				<li {% if(object.id == question.id) %}class="current_question"{%endif%}><a href="{{ path("test", { 'index': key+1 }) }}">Question {{ key + 1 }}</a></li>
+				<li {% if(object.id == question.id) %}class="current_question"{%endif%}><a href="{{ path("test", { 'id': object.id }) }}">Question {{ key + 1 }}</a></li>
 			{% endfor %}
 		</ul>
 	</div>
 	<div class="question_container">
-		<form id="answer" method="post" action="{{ path('submit_answer') }}">
-			<input type="hidden" name="index" value="{{ index }}" />
-			<h3 class="colored">{{ question.content }}</h3>
-			<div class="horizontal-line"></div>
-			{% if(question.language) %}
-			<div style="clear:both">
-				<pre class="brush: {{ question.language.code|lower }}">{{ question.code }}</pre>
-			</div>
-			<div class="horizontal-line"></div>
-			{% endif %}
-			<ul>
-				{% for answer in question.answers %}
-				<li class="possible_answer"><input type="checkbox" name="answers[]" value="{{ answer.id }}" {% if( test.isSelected(question,answer) ) %}checked{% endif %}/>{{ answer.content }}</li>
-				{% endfor %}
-			</ul>
-			<div class="horizontal-line"></div>
-			<div style="float:right;">
-				<a class="cool-button round red">Enregistrer</a>
-			</div>
-			<div style="float:right;margin-right:20px;">
-				<a class="cool-button round blue" >Terminer le test</a>
-			</div>
+		<h3 class="colored">{{ question.content }}</h3>
+		<div class="horizontal-line"></div>
+		{% if(question.language) %}
+		<div style="clear:both">
+			<pre class="brush: {{ question.language.code|lower }}">{{ question.code }}</pre>
+		</div>
+		<div class="horizontal-line"></div>
+		{% endif %}
+		<form id="answer" action="{{ path('submit_answer', { 'id':question.id } ) }}" method="post" {{ form_enctype(form) }}>
+			{{ form_widget(form) }}
 		</form>
+		<div style="float:right;">
+			<a class="cool-button round red">Enregistrer</a>
+		</div>
+		<div style="float:right;margin-right:20px;">
+			<a class="cool-button round blue" >Terminer le test</a>
+		</div>
 	</div>
 {% if(question.language) %}
 	<script type="text/javascript" src="/js/shScripts/shBrush{{ question.language.code }}.js"></script>

@@ -176,4 +176,8 @@ class Question
     {
         return $this->language;
     }
+    
+    public function __toString(){
+		return $this->id."";
+	}
 }

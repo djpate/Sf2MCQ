@@ -11,11 +11,11 @@ start_interview:
   defaults: { _controller: Sf2MCQCoreBundle:Interview:index }
   
 test:
-  pattern: /test/{index}
+  pattern: /test/{id}
   defaults: { _controller: Sf2MCQCoreBundle:Test:show }
   
 submit_answer:
-  pattern: /test-answer
+  pattern: /test-answer/{id}
   defaults: { _controller: Sf2MCQCoreBundle:Test:answer }
 
 test_finished:
