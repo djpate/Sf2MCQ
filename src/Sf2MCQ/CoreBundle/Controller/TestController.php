@@ -55,6 +55,11 @@ class TestController extends Controller
 					return $this->redirect($this->generateUrl("test",array("id"=>$next_question->getId())));
 				}
 				
+			} else {
+				
+				$this->get('session')->setFlash('error', 'Merci de choisir au moins une réponse' );
+				return $this->redirect($this->generateUrl("test",array("id"=>$this->question->getId())));
+				
 			}
 			
 		}

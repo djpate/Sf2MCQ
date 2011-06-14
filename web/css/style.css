@@ -1162,3 +1162,9 @@ form#register label{
 	display: inline-block;
 	width: 100px;
 }
+
+form#register li{
+	font-size: 10px;
+	color: red;
+	margin-left: 130px;
+}

@@ -4,3 +4,9 @@ Sf2MCQ\CoreBundle\Entity\Candidate:
       - NotBlank: ~
     lastname:
       - NotBlank: ~
+Sf2MCQ\CoreBundle\Entity\Proposition:
+    constraints:
+        - Callback:
+            methods:   [hasAnswers]
+
+      

@@ -1,6 +1,8 @@
 <?php
 
 namespace Sf2MCQ\CoreBundle\Entity;
+use Symfony\Component\Validator\ExecutionContext;
+
 
 /**
  * Sf2MCQ\CoreBundle\Entity\Proposition
@@ -126,4 +128,13 @@ class Proposition
     {
         return $this->candidate;
     }
+    
+    public function hasAnswers(ExecutionContext $context){
+		if ( count($this->answers) === 0 ) {
+			$property_path = $context->getPropertyPath() . '.answers.[0].count';
+            $context->setPropertyPath($property_path);
+			$context->addViolation('You have to pick at least one answer...', array(), null);
+		}
+	}
+
 }

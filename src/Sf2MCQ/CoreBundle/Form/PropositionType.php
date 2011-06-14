@@ -26,7 +26,8 @@ class PropositionType extends AbstractType
 												},
 												'multiple' => 'true',
 												'expanded' => 'true',
-												'property' => 'content'
+												'property' => 'content',
+												'required' => 'true'
 											 )
 					 );
     }

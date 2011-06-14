@@ -9,11 +9,28 @@
 	<div class="one">
 		<form id="register" action="{{ path('start_interview' , { 'id':interview.id } ) }}" method="post" {{ form_enctype(form) }}>
 			<h1>Avant de commencer votre test...</h1>
-			{{ form_widget(form) }}
+			<div>
+				{{ form_label(form.firstname) }}
+				{{ form_widget(form.firstname) }}
+				{{ form_errors(form.firstname) }}
+			</div>
+			<div>
+				{{ form_label(form.lastname) }}
+				{{ form_widget(form.lastname) }}
+				{{ form_errors(form.lastname) }}
+			</div>
+			{{ form_rest(form) }}
 			<div style="float:right;margin:10px 48px 10px 0">
-				<a class="cool-button round blue" href="">Demarrer le test</a>
+				<a class="cool-button round blue starttest" href="#">Demarrer le test</a>
 			</div>
 			<div style="clear:both"></div>
 		</form>
 	</div>
+	<script>
+		$(document).ready(function(){
+			$(".starttest").click(function(){
+				$("#register")[0].submit();
+			});
+		});
+	</script>
 {% endblock %}

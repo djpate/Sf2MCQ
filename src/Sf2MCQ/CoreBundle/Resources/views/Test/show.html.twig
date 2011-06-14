@@ -27,7 +27,8 @@
 				{% for item in form.answers %}
 				<li class="possible_answer">{{ form_widget(item) }}{{ form_label(item) }}</li>
 				{% endfor %}
-			</ul>	
+			</ul>
+			{{ form_rest(form) }}	
 		</form>
 		<div style="float:right;">
 			<a class="cool-button round red">Enregistrer</a>
