@@ -23,7 +23,11 @@
 		<div class="horizontal-line"></div>
 		{% endif %}
 		<form id="answer" action="{{ path('submit_answer', { 'id':question.id } ) }}" method="post" {{ form_enctype(form) }}>
-			{{ form_widget(form) }}
+			<ul>
+				{% for item in form.answers %}
+				<li class="possible_answer">{{ form_widget(item) }}{{ form_label(item) }}</li>
+				{% endfor %}
+			</ul>	
 		</form>
 		<div style="float:right;">
 			<a class="cool-button round red">Enregistrer</a>

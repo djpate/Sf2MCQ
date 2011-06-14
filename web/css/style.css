@@ -1120,3 +1120,7 @@ box-shadow: 0 1px 5px 1px rgba(0,0,0,0.15), inset 0 1px 0 #b576ad;
 	font-size: 21px;
 	font-weight: bold;
 }
+
+#answer label{
+	display: inline;
+}
