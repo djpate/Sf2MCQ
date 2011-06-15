@@ -1,6 +1,6 @@
 assetic origin/HEAD
 symfony origin/HEAD
-doctrine 2.0.5
+doctrine origin/2.0.x
 doctrine-dbal 2.0.5
 doctrine-common origin/3.0.x
 swiftmailer origin/4.1

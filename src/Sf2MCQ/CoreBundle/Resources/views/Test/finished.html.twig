@@ -3,6 +3,17 @@
 	<div class="one">
 		<div class="intro-pages">
 			<h3>Le test est terminé</h3>
+			<h4>{{ note }} / {{ total }}</h2>
+			{% for question in test.interview.questions %}
+				<div>
+					<h5 class="question_display">{{ question.content }}</h5>
+					<div>
+						{% for answer in question.answers %}
+							<input type="checkbox" disabled> <span class="answer_display {% if answer.valid %}valid{% endif %}">{{ answer.content }}</span>
+						{% endfor %}
+					</div>
+				</div>
+			{% endfor %}
 		</div>
 	</div>
 {% endblock %}

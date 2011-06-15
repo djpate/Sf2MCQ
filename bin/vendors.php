@@ -57,7 +57,7 @@ foreach (file(__DIR__.'/deps') as $line) {
     }
     $rev = isset($versions[$name]) ? $versions[$name] : 'origin/HEAD';
 
-    echo "> Installing/Updating $name\n";
+    echo "> Installing/Updating $name > $rev\n";
 
     if (!is_dir($installDir)) {
         system(sprintf('git clone %s %s %s', $cloneOptions, $url, $installDir));

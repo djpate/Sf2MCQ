@@ -110,6 +110,7 @@ class TestController extends Controller
     
     public function finishedAction(){
 		
+		$dbal = $this->get('database_connection');
 		$em = $this->get('doctrine')->getEntityManager();
 		$session = $this->get('session');
 		
@@ -127,10 +128,19 @@ class TestController extends Controller
 		$test->setEnd(new \datetime());
 		$em->persist($test);
 		$em->flush();
+	
 		
-		$session->remove("test");
+		$stmt = $dbal->executeQuery( "select sum(points) from question where interview_id = ?", array($test->getInterview()->getId()) );
+		$total = $stmt->fetch();
+		$total = $total[0];
 		
-		return $this->render('Sf2MCQCoreBundle:Test:finished.html.twig' , array("test"=>$test) );
+		$stmt = $dbal->executeQuery(" SELECT sum(points) FROM `proposition_answers` pa, proposition p,answer a,question q WHERE p.id = pa.proposition_id and pa.answer_id = a.id and a.question_id = q.id and a.valid = 1 and p.test_id = ?", array($test->getId()) );
+		$note = $stmt->fetch();
+		$note = $note[0];
+		
+		//$session->remove("test");
+		
+		return $this->render('Sf2MCQCoreBundle:Test:finished.html.twig' , array("test"=>$test,"total"=>$total,"note"=>$note) );
 	}
 	
 }

@@ -9,7 +9,7 @@
 		<h4>Liste des questions</h4>
 		<ul>
 			{% for key, object in test.interview.questions %}
-				<li {% if(object.id == question.id) %}class="current_question"{%endif%}><a href="{{ path("test", { 'id': object.id }) }}">Question {{ key + 1 }}</a></li>
+				<li class="{% if(test.isAnswered(object)) %}answered{% endif %}{% if(object.id == question.id) %}current_question"{%endif%}"><a class="question_link" href="{{ path("test", { 'id': object.id }) }}">Question {{ key + 1 }}</a></li>
 			{% endfor %}
 		</ul>
 	</div>
