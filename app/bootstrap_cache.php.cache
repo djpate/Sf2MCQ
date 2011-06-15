@@ -1642,7 +1642,7 @@ class Request
         }
                         $_REQUEST = array_merge($_GET, $_POST);
     }
-                        public function get($key, $default = null, $deep = false)
+    public function get($key, $default = null, $deep = false)
     {
         return $this->query->get($key, $this->attributes->get($key, $this->request->get($key, $default, $deep), $deep), $deep);
     }

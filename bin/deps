@@ -13,5 +13,9 @@
 /bundles/Symfony/Bundle WebConfiguratorBundle http://github.com/symfony/WebConfiguratorBundle.git
 /                       doctrine-fixtures     http://github.com/doctrine/data-fixtures.git
 /bundles/Symfony/Bundle DoctrineFixturesBundle http://github.com/symfony/DoctrineFixturesBundle.git
-
+/Knplabs/Bundle         MenuBundle            http://github.com/sonata-project/MenuBundle.git
+/Sonata                 jQueryBundle          http://github.com/sonata-project/jQueryBundle.git
+/Sonata                 BluePrintBundle       http://github.com/sonata-project/BluePrintBundle.git
+/Sonata                 AdminBundle           http://github.com/sonata-project/AdminBundle.git
+	
 

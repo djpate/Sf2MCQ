@@ -4,16 +4,27 @@ namespace Sf2MCQ\CoreBundle\Admin;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 
-class SubjectAdmin extends Admin
+class InterviewAdmin extends Admin
 {
     protected $list = array(
         'name' => array('identifier' => true), // add edit link
-        'category' => array('edit' => 'list')
+        'level',
+        'subject',
+        'duration'
     );
     
     protected $form = array(
 		'name',
-		'category'
+        'level',
+        'subject',
+        'duration',
+	);
+	
+	protected $filter = array(
+		'name',
+        'level',
+        'subject',
+        'duration'
 	);
 }
 ?>

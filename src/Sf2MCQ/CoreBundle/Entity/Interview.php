@@ -178,4 +178,8 @@ class Interview extends InterviewModel
     {
         return $this->tests;
     }
+    
+    public function __toString(){
+		return $this->name;
+	}
 }

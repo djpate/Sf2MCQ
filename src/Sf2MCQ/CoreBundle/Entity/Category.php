@@ -76,4 +76,8 @@ class Category
     {
         return $this->subjects;
     }
+    
+    public function __toString(){
+		return $this->name;
+	}
 }

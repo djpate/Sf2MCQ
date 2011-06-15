@@ -66,6 +66,21 @@ services:
    sf2mcq.core.admin.subject:
       class: Sf2MCQ\CoreBundle\Admin\SubjectAdmin
       tags:
-        - { name: sonata.admin, manager_type: orm, group: Sf2MCQ, label: category }
+        - { name: sonata.admin, manager_type: orm, group: Sf2MCQ, label: subject }
       arguments: [null, Sf2MCQ\CoreBundle\Entity\Subject, Sf2MCQCoreBundle:SubjectAdmin]
+   sf2mcq.core.admin.language:
+      class: Sf2MCQ\CoreBundle\Admin\LanguageAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: Sf2MCQ, label: language }
+      arguments: [null, Sf2MCQ\CoreBundle\Entity\Language, Sf2MCQCoreBundle:LanguageAdmin]
+   sf2mcq.core.admin.interview:
+      class: Sf2MCQ\CoreBundle\Admin\InterviewAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: Sf2MCQ, label: interview }
+      arguments: [null, Sf2MCQ\CoreBundle\Entity\Interview, Sf2MCQCoreBundle:InterviewAdmin]
+   sf2mcq.core.admin.question:
+      class: Sf2MCQ\CoreBundle\Admin\QuestionAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: Sf2MCQ, label: question }
+      arguments: [null, Sf2MCQ\CoreBundle\Entity\Question, Sf2MCQCoreBundle:QuestionAdmin]
 

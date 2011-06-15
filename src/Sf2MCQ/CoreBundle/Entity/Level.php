@@ -76,4 +76,8 @@ class Level
     {
         return $this->interviews;
     }
+    
+    public function __toString(){
+		return $this->name;
+	}
 }

@@ -15,6 +15,8 @@ $loader->registerNamespaces(array(
     'Monolog'          => __DIR__.'/../vendor/monolog/src',
     'Assetic'          => __DIR__.'/../vendor/assetic/src',
     'Metadata'         => __DIR__.'/../vendor/metadata/src',
+    'Sonata'           => __DIR__.'/../vendor',
+    'Knplabs'           => __DIR__.'/../vendor',
     'Sf2MCQ'		   => __DIR__.'/../src'
 ));
 $loader->registerPrefixes(array(

@@ -128,4 +128,8 @@ class Subject extends SubjectModel
     {
         return $this->interviews;
     }
+    
+    public function __toString(){
+		return $this->name;
+	}
 }
