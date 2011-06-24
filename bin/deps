@@ -17,5 +17,6 @@
 /Sonata                 jQueryBundle          http://github.com/sonata-project/jQueryBundle.git
 /Sonata                 BluePrintBundle       http://github.com/sonata-project/BluePrintBundle.git
 /Sonata                 AdminBundle           http://github.com/sonata-project/AdminBundle.git
+/bundles/Symfony/Bundle AsseticBundle         http://github.com/symfony/AsseticBundle.git
 	
 
