@@ -12,6 +12,18 @@ class QuestionAdmin extends Admin
         'points'
     );
     
+    protected $formGroups = array(
+		'Général' => array(
+			'fields' => array("content","interview","points")
+					),
+		'Code' => array(
+			'fields' => array("code","language")
+					),
+		'Réponse' => array(
+			'fields' => array("answers")
+					)
+	);
+    
     protected $form = array(
 		'content',
         'interview',
