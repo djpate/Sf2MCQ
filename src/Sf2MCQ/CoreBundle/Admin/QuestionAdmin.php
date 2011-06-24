@@ -20,7 +20,9 @@ class QuestionAdmin extends Admin
         'code',
         'answers' => array(
             'edit' => 'inline',
-        ),
+            'inline' => 'table',
+            'sortable' => 'position'
+        )
 	);
 	
 	protected $filter = array(
@@ -28,5 +30,6 @@ class QuestionAdmin extends Admin
         'interview',
         'points'
 	);
+	
 }
 ?>

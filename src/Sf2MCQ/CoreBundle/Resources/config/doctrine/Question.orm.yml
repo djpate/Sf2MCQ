@@ -18,6 +18,9 @@ Sf2MCQ\CoreBundle\Entity\Question:
     answers:
       targetEntity: Answer
       mappedBy: question
+      cascade:
+        - persist
+        - delete
   manyToOne:
     interview:
       targetEntity: Interview

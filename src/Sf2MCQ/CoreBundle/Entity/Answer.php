@@ -97,4 +97,8 @@ class Answer
     {
         return $this->question;
     }
+    
+    public function __toString(){
+		return $this->content;
+	}
 }

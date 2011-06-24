@@ -83,4 +83,9 @@ services:
       tags:
         - { name: sonata.admin, manager_type: orm, group: Sf2MCQ, label: question }
       arguments: [null, Sf2MCQ\CoreBundle\Entity\Question, Sf2MCQCoreBundle:QuestionAdmin]
+   sf2mcq.core.admin.answer:
+      class: Sf2MCQ\CoreBundle\Admin\AnswerAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: Sf2MCQ, label: answer }
+      arguments: [null, Sf2MCQ\CoreBundle\Entity\Answer, Sf2MCQCoreBundle:AnswerAdmin]
 
