@@ -129,7 +129,54 @@ class Subject extends SubjectModel
         return $this->interviews;
     }
     
+    public function getLogo(){
+		if($this->getLogoname()){
+			return $this->getLogoname();
+		}
+	}
+	
+	public function setLogo($logo){
+		/* this is not really secured (duh) but since it's from the admin it should be ok 
+		 * TODO Secure it ! size + ext
+		 * */
+		
+		$logo_root = __DIR__."/../../../../web/subject_logo";
+		$subject_root = $logo_root."/".$this->id;
+		
+		if(!is_dir($subject_root)){
+			mkdir($subject_root);
+		}
+		
+		$logo->move($subject_root,$logo->getClientOriginalName());
+		$this->setLogoname($logo->getClientOriginalName());
+	}
+    
     public function __toString(){
 		return $this->name;
 	}
+    /**
+     * @var text $logoname
+     */
+    private $logoname;
+
+
+    /**
+     * Set logoname
+     *
+     * @param text $logoname
+     */
+    public function setLogoname($logoname)
+    {
+        $this->logoname = $logoname;
+    }
+
+    /**
+     * Get logoname
+     *
+     * @return text $logoname
+     */
+    public function getLogoname()
+    {
+        return $this->logoname;
+    }
 }

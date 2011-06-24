@@ -73,7 +73,9 @@ file that was distributed with this source code.
 
                 <div class="span-4 last">
                     {% block user_panel %}
-						<a href="{{ url('fos_user_security_logout') }}">Logout</a>
+						<a href="{{ url('fos_user_security_logout') }}">
+							<h3>{% trans %}Logout{% endtrans %}</h3>
+						</a>
                     {% endblock %}
                 </div>
             </div>

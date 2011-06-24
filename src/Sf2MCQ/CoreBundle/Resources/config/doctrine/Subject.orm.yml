@@ -12,6 +12,8 @@ Sf2MCQ\CoreBundle\Entity\Subject:
       length: 255
     description:
       type: text
+    logoname:
+      type: text
   oneToMany:
     interviews:
       targetEntity: Interview

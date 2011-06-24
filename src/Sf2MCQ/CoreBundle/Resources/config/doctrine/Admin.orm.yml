@@ -1,0 +1,9 @@
+Sf2MCQ\CoreBundle\Entity\Admin:
+  type: entity
+  table: admin
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+      

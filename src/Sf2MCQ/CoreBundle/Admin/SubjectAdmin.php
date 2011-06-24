@@ -3,6 +3,8 @@ namespace Sf2MCQ\CoreBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\Form\FormMapper;
+
 
 class SubjectAdmin extends Admin
 {
@@ -15,5 +17,12 @@ class SubjectAdmin extends Admin
 		'name',
 		'category'
 	);
+	
+	public function configureFormFields(FormMapper $form)
+      {
+          $form->addType('logo', 'file', array('required' => false));
+      }
+
+
 }
 ?>
