@@ -1130,7 +1130,7 @@ form#register {
     -moz-box-shadow: 0 0 10px #4E707C;
     background: none repeat scroll 0 0 #FFFFFF;
     border: 8px solid #EEEEEE;
-    margin: 0 auto;
+    margin: 25px auto;
     position: relative;
     text-align: left;
     width: 400px;
@@ -1155,6 +1155,10 @@ form#register input{
     line-height: 1em;
     padding: 4px;
     width: 220px;
+}
+
+form#register input[type=submit]{
+	display: block;
 }
 
 form#register label{

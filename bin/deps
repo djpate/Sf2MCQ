@@ -18,5 +18,7 @@
 /Sonata                 BluePrintBundle       http://github.com/sonata-project/BluePrintBundle.git
 /Sonata                 AdminBundle           http://github.com/sonata-project/AdminBundle.git
 /bundles/Symfony/Bundle AsseticBundle         http://github.com/symfony/AsseticBundle.git
+/bundles/FOS            UserBundle            git://github.com/FriendsOfSymfony/UserBundle.git
+
 	
 

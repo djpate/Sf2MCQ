@@ -26,6 +26,7 @@ class AppKernel extends Kernel
 			new Sonata\BluePrintBundle\SonataBluePrintBundle(),
 			new Sonata\AdminBundle\SonataAdminBundle(),
 			new Knplabs\Bundle\MenuBundle\KnplabsMenuBundle(),
+			new FOS\UserBundle\FOSUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -18,6 +18,13 @@ framework:
         default_locale: %locale%
         lifetime:       3600
         auto_start:     true
+        
+# FOS UBundle
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Sf2MCQ\CoreBundle\Entity\Admin
+    
 
 # Twig Configuration
 twig:

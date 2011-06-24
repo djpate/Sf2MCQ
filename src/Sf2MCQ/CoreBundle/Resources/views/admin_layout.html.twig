@@ -72,7 +72,9 @@ file that was distributed with this source code.
                 </div>
 
                 <div class="span-4 last">
-                    {% block user_panel %}Add here logout option / user options{% endblock %}
+                    {% block user_panel %}
+						<a href="{{ url('fos_user_security_logout') }}">Logout</a>
+                    {% endblock %}
                 </div>
             </div>
 

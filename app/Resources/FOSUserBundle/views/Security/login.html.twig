@@ -1,0 +1,37 @@
+{% extends 'Sf2MCQCoreBundle::base.html.twig' %}
+
+{% block body %}
+{% if error %}
+    <div>{{ error }}</div>
+{% endif %}
+
+<div class="one">
+
+	<form id="register" action="{{ path("fos_user_security_check") }}" method="post">
+		<h1>Accès à l'administration</h1>
+		
+		<label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+		<input type="text" id="username" name="_username" value="{{ last_username }}" />
+
+		<label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+		<input type="password" id="password" name="_password" />
+
+		<label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+		<input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+
+		<div style="clear:both"></div>
+		<div style="float:right;margin:10px 48px 10px 0">
+			<a class="cool-button round blue logon" href="#">Connexion</a>
+		</div>
+		<div style="clear:both"></div>
+	</form>
+	
+</div>
+<script>
+	$(document).ready(function(){
+		$(".logon").click(function(){
+			$("#register")[0].submit();
+		});
+	});
+</script>
+{% endblock body %}
