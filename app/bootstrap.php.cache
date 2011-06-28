@@ -317,40 +317,6 @@ class Container implements ContainerInterface
 
 
 
-namespace Symfony\Component\DependencyInjection
-{
-
-
-interface ContainerAwareInterface
-{
-    
-    function setContainer(ContainerInterface $container = null);
-}
-}
- 
-
-
-
-namespace Symfony\Component\DependencyInjection
-{
-
-
-class ContainerAware implements ContainerAwareInterface
-{
-    
-    protected $container;
-
-    
-    public function setContainer(ContainerInterface $container = null)
-    {
-        $this->container = $container;
-    }
-}
-}
- 
-
-
-
 namespace Symfony\Component\HttpKernel\Bundle
 {
 
@@ -846,7 +812,7 @@ abstract class Kernel implements KernelInterface
     protected $startTime;
     protected $classes;
 
-    const VERSION = '2.0.0-RC1-DEV';
+    const VERSION = '2.0.0-RC3';
 
     
     public function __construct($environment, $debug)
@@ -1939,6 +1905,7 @@ class Request
             'SCRIPT_NAME'          => '',
             'SCRIPT_FILENAME'      => '',
             'SERVER_PROTOCOL'      => 'HTTP/1.1',
+            'REQUEST_TIME'         => time(),
         );
 
         $components = parse_url($uri);

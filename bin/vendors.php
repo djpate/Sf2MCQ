@@ -12,12 +12,24 @@
 
 $rootDir = dirname(__DIR__);
 $vendorDir = $rootDir.'/vendor';
-$version = trim(file_get_contents($rootDir.'/VERSION'));
 
-// Initialization
-$cloneOptions = '';
-if (in_array('--min', $argv)) {
-    $cloneOptions = '--depth 1';
+array_shift($argv);
+if (!isset($argv[0])) {
+    exit(<<<EOF
+Symfony2 vendors script management.
+
+Specify a command to run:
+
+ install: install vendors as specified in deps or deps.lock (recommended)
+ update:  update vendors to their latest versions (as specified in deps)
+
+
+EOF
+    );
+}
+
+if (!in_array($command = array_shift($argv), array('install', 'update'))) {
+    exit(sprintf("Command \"%s\" does not exist.\n", $command));
 }
 
 if (!is_dir($vendorDir)) {
@@ -26,54 +38,70 @@ if (!is_dir($vendorDir)) {
 
 // versions
 $versions = array();
-foreach (file(__DIR__.'/'.$version.'.deps') as $line) {
-    if (!trim($line)) {
-        continue;
+if ('install' === $command && file_exists($rootDir.'/deps.lock')) {
+    foreach (file($rootDir.'/deps.lock', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
+        $parts = array_values(array_filter(explode(' ', $line)));
+        if (2 !== count($parts)) {
+            exit(sprintf('The deps version file is not valid (near "%s")', $line));
+        }
+        $versions[$parts[0]] = $parts[1];
     }
-    $parts = array_values(array_filter(explode(' ', trim($line))));
-    if (2 !== count($parts)) {
-        die(sprintf('The deps version file is not valid (near "%s")', $line));
-    }
-    $versions[$parts[0]] = $parts[1];
 }
 
-foreach (file(__DIR__.'/deps') as $line) {
-    if (!trim($line)) {
-        continue;
+$newversions = array();
+$deps = parse_ini_file($rootDir.'/deps', true, INI_SCANNER_RAW);
+foreach ($deps as $name => $dep) {
+    // revision
+    if (isset($versions[$name])) {
+        $rev = $versions[$name];
+    } else {
+        $rev = isset($dep['version']) ? $dep['version'] : 'origin/HEAD';
     }
-    $parts = array_values(array_filter(explode(' ', trim($line))));
-    if (3 !== count($parts)) {
-        die(sprintf('The deps file is not valid (near "%s")', $line));
-    }
-    list($path, $name, $url) = $parts;
 
-    $installDir = $vendorDir.'/'.$path.'/'.$name;
+    // install dir
+    $installDir = isset($dep['target']) ? $vendorDir.'/'.$dep['target'] : $vendorDir.'/'.$name;
     if (in_array('--reinstall', $argv)) {
         if (PHP_OS == 'WINNT') {
-            system('rmdir /S /Q '.realpath($installDir));
+            system(sprintf('rmdir /S /Q %s', escapeshellarg(realpath($installDir))));
         } else {
-            system('rm -rf '.$installDir);
+            system(sprintf('rm -rf %s', escapeshellarg($installDir)));
         }
     }
-    $rev = isset($versions[$name]) ? $versions[$name] : 'origin/HEAD';
 
-    echo "> Installing/Updating $name > $rev\n";
+    echo "> Installing/Updating $name\n";
+
+    // url
+    if (!isset($dep['git'])) {
+        exit(sprintf('The "git" value for the "%s" dependency must be set.', $name));
+    }
+    $url = $dep['git'];
 
     if (!is_dir($installDir)) {
-        system(sprintf('git clone %s %s %s', $cloneOptions, $url, $installDir));
+        system(sprintf('git clone %s %s', escapeshellarg($url), escapeshellarg($installDir)));
     }
 
-    system(sprintf('cd %s && git fetch origin && git reset --hard %s', $installDir, $rev));
+    system(sprintf('cd %s && git fetch origin && git reset --hard %s', escapeshellarg($installDir), escapeshellarg($rev)));
+
+    if ('update' === $command) {
+        ob_start();
+        system(sprintf('cd %s && git log -n 1 --format=%%H', escapeshellarg($installDir)));
+        $newversions[] = trim($name.' '.ob_get_clean());
+    }
+}
+
+// update?
+if ('update' === $command) {
+    file_put_contents($rootDir.'/deps.lock', implode("\n", $newversions));
 }
 
 // php on windows can't use the shebang line from system()
 $interpreter = PHP_OS == 'WINNT' ? 'php.exe' : '';
 
 // Update the bootstrap files
-system(sprintf('%s %s/bin/build_bootstrap.php', $interpreter, $rootDir));
+system(sprintf('%s %s', $interpreter, escapeshellarg($rootDir.'/vendor/bundles/Sensio/Bundle/DistributionBundle/Resources/bin/build_bootstrap.php')));
 
 // Update assets
-system(sprintf('%s %s/app/console assets:install %s/web/', $interpreter, $rootDir, $rootDir));
+system(sprintf('%s %s assets:install %s', $interpreter, escapeshellarg($rootDir.'/app/console'), escapeshellarg($rootDir.'/web/')));
 
 // Remove the cache
-system(sprintf('%s %s/app/console cache:clear --no-warmup', $interpreter, $rootDir));
+system(sprintf('%s %s cache:clear --no-warmup', $interpreter, escapeshellarg($rootDir.'/app/console')));

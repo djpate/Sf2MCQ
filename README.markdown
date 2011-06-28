@@ -9,6 +9,7 @@ Installation
 	php bin/vendors.php --reinstall
 	chmod 777 app/cache -R
 	chmod 777 app/logs -R
+	chmod 777 web/subject_logo -R
 	nano app/config/parameters.ini # to setup db connection
 	php app/console doctrine:schema:create
 	php app/console doctrine:fixtures:load
